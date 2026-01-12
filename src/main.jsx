@@ -13,7 +13,7 @@ const root = createRoot(document.getElementById('root'))
 root.render(
     <ToasterProvider toaster={ toaster }>
         <QueryClientProvider client={ queryClient }>
-            <ThemeProvider theme={ 'dark' }>
+            <ThemeProvider theme={ 'light' }>
                 <App/>
                 <ToasterComponent/>
             </ThemeProvider>
