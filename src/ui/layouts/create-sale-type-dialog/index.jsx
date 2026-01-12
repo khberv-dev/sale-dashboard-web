@@ -4,11 +4,12 @@ import { useForm } from 'react-hook-form'
 import { useCreateSaleTypeMutation } from '@/services/sale/query.js'
 
 function CreateSaleTypeDialog({ open, onClose }) {
-    const { register, handleSubmit, control } = useForm()
+    const { register, handleSubmit, reset } = useForm()
     const createSaleType = useCreateSaleTypeMutation()
 
     const onSubmit = async (data) => {
         await createSaleType.mutateAsync(data)
+        reset()
         onClose()
     }
 

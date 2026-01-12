@@ -6,17 +6,19 @@ import PhotoUploadPreview from '@/ui/components/photo-upload-preview/index.jsx'
 import { getAvatarUrl } from '@/utils/url-resolver.js'
 
 function EditManagerDialog({ manager, open, onClose }) {
-    const { register, handleSubmit } = useForm()
+    const { register, handleSubmit, reset } = useForm()
     const updateManager = useUpdateManagerMutation()
     const uploadManagerAvatar = useUploadManagerAvatarMutation()
 
     const onSubmit = async (data) => {
         await updateManager.mutateAsync({ id: manager.id, data })
+        reset()
         onClose()
     }
 
     const onUploadAvatar = async (file) => {
         uploadManagerAvatar.mutate({ id: manager.id, file })
+        reset()
     }
 
     if (!manager) {

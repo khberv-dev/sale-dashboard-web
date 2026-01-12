@@ -4,12 +4,12 @@ import { useForm } from 'react-hook-form'
 import { useCreateManagerMutation } from '@/services/manager/query.js'
 
 function CreateManagerDialog({ open, onClose }) {
-    const { register, handleSubmit, control } = useForm()
+    const { register, handleSubmit, reset } = useForm()
     const createManager = useCreateManagerMutation()
 
     const onSubmit = async (data) => {
-        console.log(data)
         await createManager.mutateAsync({ ...data })
+        reset()
         onClose()
     }
 

@@ -13,7 +13,7 @@ export const useUploadManagerAvatarMutation = () => useInfoMutation({
 })
 
 export const useUpdateManagerMutation = () => useInfoMutation({
-    mutationFn: ({ id, file }) => updateManager(id, file),
+    mutationFn: ({ id, data }) => updateManager(id, data),
     queryKey: ['managers']
 })
 

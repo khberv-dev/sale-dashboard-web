@@ -8,7 +8,7 @@ import { DatePicker } from '@gravity-ui/date-components'
 import { dateTime, dateTimeParse } from '@gravity-ui/date-utils'
 
 function CreateSaleDialog({ open, onClose }) {
-    const { register, handleSubmit, control } = useForm()
+    const { handleSubmit, control, reset } = useForm()
     const createSale = useCreateSaleMutation()
     const { data: saleTypes, isLoading: saleTypesLoading } = useGetSaleTypesQuery()
 
@@ -28,6 +28,7 @@ function CreateSaleDialog({ open, onClose }) {
             date,
             time
         })
+        reset()
         onClose()
     }
 
