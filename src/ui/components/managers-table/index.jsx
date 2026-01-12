@@ -6,7 +6,7 @@ import { getAvatarUrl } from '@/utils/url-resolver.js'
 const columns = [
     {
         id: 'index',
-        name: '#',
+        name: '',
         template: (_, index) => (index + 1).toString(),
         width: 40
     },
