@@ -1,0 +1,64 @@
+import st from './main.module.scss'
+import TotalSaleCard from '@/ui/components/total-sale-card/index.jsx'
+import TopManagersCard from '@/ui/components/top-managers-card/index.jsx'
+import ManagersResultTable from '@/ui/components/managers-result-table/index.jsx'
+import { useGetSaleStatsQuery } from '@/services/sale/query.js'
+import { Spin } from '@gravity-ui/uikit'
+import useSocket from '@/services/socket.js'
+import { useEffect, useState } from 'react'
+import NewSaleDialog from '@/ui/layouts/new-sale-dialog/index.jsx'
+
+function HomePage() {
+    const { data: saleStats, isLoading } = useGetSaleStatsQuery()
+    const socket = useSocket()
+    const [newSaleData, setNewSaleData] = useState(null)
+
+    useEffect(() => {
+        const queueAudio = new Audio('src/assets/queue.mp3')
+
+        if (!socket) {
+            return
+        }
+
+        socket.on('new-sale', data => {
+            queueAudio.play()
+            setNewSaleData(data)
+
+            setTimeout(() => {
+                setNewSaleData(null)
+            }, 5000)
+        })
+
+        return () => {
+            socket.off('new-sale')
+        }
+    }, [socket])
+
+    return (
+        <div className={ st.container }>
+            { isLoading ? <Spin/> :
+                <>
+                    <div className={ st.totalResultContainer }>
+                        <TotalSaleCard
+                            dailySale={ saleStats.dailyAmount }
+                            totalSale={ saleStats.totalAmount }
+                            dailyPlan={ 24000000 }
+                            monthlySale={ 65000000 }
+                            monthlyPlan={ 500000000 }/>
+                        <TopManagersCard
+                            topManagers={ saleStats.total }
+                        />
+                    </div>
+                    <ManagersResultTable data={ saleStats.total }/>
+                    <NewSaleDialog
+                        saleData={ newSaleData }
+                        open={ !!newSaleData }
+                        onClose={ () => setNewSaleData(null) }
+                    />
+                </>
+            }
+        </div>
+    )
+}
+
+export default HomePage
