@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import { createSale, getAllSales, getSaleStats, getSaleTypes } from '@/services/sale/api.js'
+import { createSale, createSaleType, getAllSales, getSaleStats, getSaleTypes } from '@/services/sale/api.js'
 import { useInfoMutation } from '@/services/query.js'
 
 export const useGetSaleStatsQuery = () => useQuery({
@@ -20,4 +20,9 @@ export const useCreateSaleMutation = () => useInfoMutation({
 export const useGetSaleTypesQuery = () => useQuery({
     queryKey: ['sale-types'],
     queryFn: getSaleTypes
+})
+
+export const useCreateSaleTypeMutation = () => useInfoMutation({
+    mutationFn: (data) => createSaleType(data),
+    queryKey: ['sale-types']
 })

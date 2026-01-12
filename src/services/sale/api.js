@@ -27,3 +27,9 @@ export async function getSaleTypes() {
 
     return res.data
 }
+
+export async function createSaleType(data) {
+    const res = await apiClient.post('sale/create-type', data)
+
+    return res.data
+}

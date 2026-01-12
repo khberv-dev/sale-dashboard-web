@@ -4,6 +4,7 @@ import HomePage from '@/ui/pages/home/index.jsx'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import ManagersPage from '@/ui/pages/managers/index.jsx'
 import SalesPage from '@/ui/pages/sales/index.jsx'
+import SaleTypesPage from '@/ui/pages/sale-types/index.jsx'
 
 function App() {
     return (
@@ -14,6 +15,7 @@ function App() {
                 <Route element={ <PrivateRoutes/> }>
                     <Route path={ '/' } element={ <HomePage/> }/>
                     <Route path={ '/sales' } element={ <SalesPage/> }/>
+                    <Route path={ '/sale-types' } element={ <SaleTypesPage/> }/>
                     <Route path={ '/managers' } element={ <ManagersPage/> }/>
                     <Route path={ '/settings' } element={ 'Not implemented' }/>
                 </Route>

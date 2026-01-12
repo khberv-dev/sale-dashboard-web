@@ -1,5 +1,5 @@
 import { AsideHeader } from '@gravity-ui/navigation'
-import { CircleDollar, Gear, House, Persons, SquareListUl } from '@gravity-ui/icons'
+import { CircleDollar, Gear, House, Pencil, Persons, SquareListUl } from '@gravity-ui/icons'
 import { useLocation, useNavigate } from 'react-router-dom'
 import useAuthContext from '@/providers/auth/useAuthContext.js'
 import useLocalStorage from '@/hooks/useLocalStorage.js'
@@ -25,6 +25,12 @@ function SideNavigation({ children }) {
             title: 'Sotuv',
             icon: SquareListUl,
             link: 'sales'
+        },
+        {
+            title: 'Sotuv turlari',
+            icon: Pencil,
+            link: 'sale-types',
+            forAdmin: true
         },
         {
             title: 'Menejerlar',
