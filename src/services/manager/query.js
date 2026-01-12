@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import { getAllManagers, updateManager, uploadManagerAvatar } from '@/services/manager/api.js'
+import { createManager, getAllManagers, updateManager, uploadManagerAvatar } from '@/services/manager/api.js'
 import { useInfoMutation } from '@/services/query.js'
 
 export const useGetAllManagersQuery = () => useQuery({
@@ -14,5 +14,10 @@ export const useUploadManagerAvatarMutation = () => useInfoMutation({
 
 export const useUpdateManagerMutation = () => useInfoMutation({
     mutationFn: ({ id, file }) => updateManager(id, file),
+    queryKey: ['managers']
+})
+
+export const useCreateManagerMutation = () => useInfoMutation({
+    mutationFn: ({ ...data }) => createManager(data),
     queryKey: ['managers']
 })

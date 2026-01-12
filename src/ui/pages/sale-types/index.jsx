@@ -11,7 +11,7 @@ function SaleTypesPage() {
     const { data: saleTypes, isLoading } = useGetSaleTypesQuery()
     const [isDialogOpen, setIsDialogOpen] = useState(false)
 
-    const onCreateSaleClick = () => {
+    const onCreateSaleTypeClick = () => {
         setIsDialogOpen(true)
     }
 
@@ -24,7 +24,7 @@ function SaleTypesPage() {
                     </div>
                     <FloatingButton
                         icon={ Plus }
-                        onClick={ onCreateSaleClick }/>
+                        onClick={ onCreateSaleTypeClick }/>
                     <CreateSaleTypeDialog
                         open={ isDialogOpen }
                         onClose={ () => setIsDialogOpen(false) }/>

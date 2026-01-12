@@ -21,3 +21,9 @@ export async function uploadManagerAvatar(id, file) {
 
     return res.data
 }
+
+export async function createManager(data) {
+    const res = await apiClient.post('manager/create', data)
+
+    return res.data
+}

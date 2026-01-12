@@ -3,7 +3,7 @@ import st from '@/ui/layouts/edit-manager-dialog/main.module.scss'
 import { useForm } from 'react-hook-form'
 import { useCreateSaleTypeMutation } from '@/services/sale/query.js'
 
-function CreateSaleDialog({ open, onClose }) {
+function CreateSaleTypeDialog({ open, onClose }) {
     const { register, handleSubmit, control } = useForm()
     const createSaleType = useCreateSaleTypeMutation()
 
@@ -33,4 +33,4 @@ function CreateSaleDialog({ open, onClose }) {
     )
 }
 
-export default CreateSaleDialog
+export default CreateSaleTypeDialog
