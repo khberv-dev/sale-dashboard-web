@@ -1,4 +1,6 @@
-import { Table } from '@gravity-ui/uikit'
+import { Icon, Label, Table, withTableActions } from '@gravity-ui/uikit'
+import { formatDate } from '@/utils/formatter.js'
+import { Pencil } from '@gravity-ui/icons'
 
 const columns = [
     {
@@ -10,15 +12,42 @@ const columns = [
     {
         id: 'name',
         name: 'Nomi'
+    },
+    {
+        id: 'status',
+        name: 'Status',
+        template: item => {
+            return item.isActive ?
+                <Label theme={ 'success' }>Faol</Label> :
+                <Label theme={ 'danger' }>Nofaol</Label>
+        }
+    },
+    {
+        id: 'created_at',
+        name: "Qo'shilgan vaqti",
+        template: item => formatDate(item.createdAt)
     }
 ]
 
-function SaleTypesTable({ data }) {
+const TableWithActions = withTableActions(Table)
+
+function SaleTypesTable({ data, onItemEdit }) {
+    const actions = (item) => [
+        {
+            text: 'Tahrirlash',
+            icon: <Icon data={ Pencil }/>,
+            handler: () => {
+                onItemEdit(item)
+            }
+        }
+    ]
+
     return (
-        <Table
+        <TableWithActions
             width={ 'max' }
             data={ data }
-            columns={ columns }/>
+            columns={ columns }
+            getRowActions={ actions }/>
     )
 }
 

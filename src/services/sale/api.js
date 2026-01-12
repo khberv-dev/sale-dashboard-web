@@ -28,8 +28,20 @@ export async function getSaleTypes() {
     return res.data
 }
 
+export async function getSaleTypeOptions() {
+    const res = await apiClient.get('sale/type-options')
+
+    return res.data
+}
+
 export async function createSaleType(data) {
     const res = await apiClient.post('sale/create-type', data)
+
+    return res.data
+}
+
+export async function updateSaleType(id, data) {
+    const res = await apiClient.put(`sale/update-type/${ id }`, data)
 
     return res.data
 }

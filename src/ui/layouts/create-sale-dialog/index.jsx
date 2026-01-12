@@ -1,7 +1,7 @@
 import { Button, Dialog, Select } from '@gravity-ui/uikit'
 import st from '@/ui/layouts/edit-manager-dialog/main.module.scss'
 import { Controller, useForm } from 'react-hook-form'
-import { useCreateSaleMutation, useGetSaleTypesQuery } from '@/services/sale/query.js'
+import { useCreateSaleMutation, useGetSaleTypeOptionsQuery } from '@/services/sale/query.js'
 import NumberInput from '@/ui/components/number-input/index.jsx'
 import { extractNumber } from '@/utils/formatter.js'
 import { DatePicker } from '@gravity-ui/date-components'
@@ -10,7 +10,7 @@ import { dateTime, dateTimeParse } from '@gravity-ui/date-utils'
 function CreateSaleDialog({ open, onClose }) {
     const { handleSubmit, control, reset } = useForm()
     const createSale = useCreateSaleMutation()
-    const { data: saleTypes, isLoading: saleTypesLoading } = useGetSaleTypesQuery()
+    const { data: saleTypes, isLoading: saleTypesLoading } = useGetSaleTypeOptionsQuery()
 
     const formInputRules = {
         required: true

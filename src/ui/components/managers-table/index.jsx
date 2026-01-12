@@ -13,7 +13,7 @@ const columns = [
     {
         id: 'avatar',
         name: '',
-        template: (item, index) => {
+        template: (item) => {
             return <Avatar
                 text={ item.firstName + ' ' + (item.lastName ? item.lastName : '') }
                 imgUrl={ getAvatarUrl(item.avatar) }
@@ -47,7 +47,7 @@ const columns = [
     }
 ]
 
-const MyTable = withTableActions(Table)
+const TableWithActions = withTableActions(Table)
 
 function ManagersTable({ data, onItemEdit }) {
     const actions = (item) => [
@@ -61,7 +61,7 @@ function ManagersTable({ data, onItemEdit }) {
     ]
 
     return (
-        <MyTable
+        <TableWithActions
             width={ 'max' }
             data={ data }
             columns={ columns }

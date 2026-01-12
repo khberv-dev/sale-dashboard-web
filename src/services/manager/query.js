@@ -18,6 +18,6 @@ export const useUpdateManagerMutation = () => useInfoMutation({
 })
 
 export const useCreateManagerMutation = () => useInfoMutation({
-    mutationFn: ({ ...data }) => createManager(data),
+    mutationFn: (data) => createManager(data),
     queryKey: ['managers']
 })

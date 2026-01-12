@@ -14,7 +14,7 @@ export function useInfoMutation({ mutationFn, queryKey }) {
                 content: data.message,
                 theme: 'success'
             })
-            client.invalidateQueries({ queryKey })
+            client.invalidateQueries(queryKey)
         },
         onError: error => {
             toaster.add({
