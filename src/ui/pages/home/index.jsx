@@ -11,6 +11,7 @@ import DailySaleChart from '@/ui/components/daily-sale-chart/index.jsx'
 import MonthlySaleChart from '@/ui/components/monthly-sale-chart/index.jsx'
 import FloatingButton from '@/ui/components/floating-button/index.jsx'
 import { VolumeFill, VolumeSlashFill } from '@gravity-ui/icons'
+import queueSound from '@/assets/queue.mp3'
 
 function HomePage() {
     const { data: saleData, isLoading } = useGetSaleStatsQuery()
@@ -19,7 +20,7 @@ function HomePage() {
     const [isSoundEnable, setIsSoundEnable] = useState(false)
 
     useEffect(() => {
-        const queueAudio = new Audio('src/assets/queue.mp3')
+        const queueAudio = new Audio(queueSound)
 
         if (!socket) {
             return
