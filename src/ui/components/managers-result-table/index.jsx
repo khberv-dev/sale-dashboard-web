@@ -1,4 +1,4 @@
-import { Avatar, Table } from '@gravity-ui/uikit'
+import { Avatar, Label, Table, Text } from '@gravity-ui/uikit'
 import { formatNumber } from '@/utils/formatter.js'
 
 const columns = [
@@ -24,12 +24,13 @@ const columns = [
     {
         id: 'sale',
         name: 'Sotuv',
-        template: item => formatNumber(item.sale) + " so'm"
+        template: item => <Text
+            color={ item.sale < 20000000 ? 'danger' : 'positive' }>{ formatNumber(item.sale) + " so'm" }</Text>
     },
     {
         id: 'salary',
         name: 'Maosh',
-        template: item => formatNumber(item.salary) + " so'm"
+        template: item => <Label theme={ 'success' }>{ formatNumber(item.salary) + " so'm" }</Label>
     }
 ]
 
