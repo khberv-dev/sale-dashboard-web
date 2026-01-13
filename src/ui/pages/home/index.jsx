@@ -39,7 +39,7 @@ function HomePage() {
         return () => {
             socket.off('new-sale')
         }
-    }, [socket])
+    }, [socket, isSoundEnable])
 
     const onToggleSoundClick = () => {
         setIsSoundEnable(old => !old)
