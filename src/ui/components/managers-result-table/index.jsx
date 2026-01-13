@@ -5,40 +5,39 @@ const columns = [
     {
         id: 'index',
         name: '',
-        width: 40
+        width: 40,
+        template: (item, index) => (index + 1).toString()
     },
     {
         id: 'avatar',
         name: '',
-        template: (item, index) => {
-            return <Avatar text={ item.fullName }/>
+        template: item => {
+            return <Avatar text={ item.firstName }/>
         },
         width: 40
     },
     {
         id: 'fullName',
-        name: 'Ism'
+        name: 'Ism',
+        template: item => item.firstName + ' ' + (item.lastName ? item.lastName : '')
     },
     {
         id: 'sale',
         name: 'Sotuv',
-        template: (item, index) => formatNumber(item.sale)
+        template: item => formatNumber(item.sale) + " so'm"
+    },
+    {
+        id: 'salary',
+        name: 'Maosh',
+        template: item => formatNumber(item.salary) + " so'm"
     }
 ]
 
 function ManagersResultTable({ data }) {
-    const tableData = data.map((manager, index) => {
-        return {
-            index: index + 1,
-            fullName: manager.firstName + ' ' + (manager.lastName ? manager.lastName : ''),
-            sale: manager.sale
-        }
-    })
-
     return (
         <Table
             width={ 'max' }
-            data={ tableData }
+            data={ data }
             columns={ columns }/>
     )
 }

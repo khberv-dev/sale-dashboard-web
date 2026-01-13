@@ -13,7 +13,7 @@ import FloatingButton from '@/ui/components/floating-button/index.jsx'
 import { VolumeFill, VolumeSlashFill } from '@gravity-ui/icons'
 
 function HomePage() {
-    const { data: saleStats, isLoading } = useGetSaleStatsQuery()
+    const { data: saleData, isLoading } = useGetSaleStatsQuery()
     const socket = useSocket()
     const [newSaleData, setNewSaleData] = useState(null)
     const [isSoundEnable, setIsSoundEnable] = useState(false)
@@ -51,22 +51,22 @@ function HomePage() {
                 <>
                     <div className={ st.totalResultContainer }>
                         <TotalSaleCard
-                            dailySale={ saleStats.dailyAmount }
-                            totalSale={ saleStats.totalAmount }
+                            dailySale={ saleData.dailyAmount }
+                            totalSale={ saleData.totalAmount }
                             dailyPlan={ 24000000 }
                             monthlySale={ 65000000 }
                             monthlyPlan={ 500000000 }/>
                         <TopManagersCard
-                            topManagers={ saleStats.total }
+                            topManagers={ saleData.total }
                         />
                     </div>
                     <div className={ st.detailContainer }>
                         <div className={ st.managersResultContainer }>
-                            <ManagersResultTable data={ saleStats.total }/>
+                            <ManagersResultTable data={ saleData.total }/>
                         </div>
                         <div className={ st.summaryContainer }>
-                            <DailySaleChart saleData={ saleStats.dailyStats }/>
-                            <MonthlySaleChart saleData={ saleStats.monthlyStats }/>
+                            <DailySaleChart saleData={ saleData.dailyStats }/>
+                            <MonthlySaleChart saleData={ saleData.monthlyStats }/>
                         </div>
                     </div>
                     <FloatingButton
