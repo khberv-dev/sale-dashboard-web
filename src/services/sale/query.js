@@ -16,9 +16,9 @@ export const useGetSaleStatsQuery = () => useQuery({
     queryFn: getSaleStats
 })
 
-export const useGetSalesQuery = () => useQuery({
-    queryKey: ['sales'],
-    queryFn: getAllSales
+export const useGetSalesQuery = (params) => useQuery({
+    queryKey: ['sales', params],
+    queryFn: () => getAllSales(params.page)
 })
 
 export const useCreateSaleMutation = () => useInfoMutation({

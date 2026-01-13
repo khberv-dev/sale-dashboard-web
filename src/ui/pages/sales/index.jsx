@@ -8,7 +8,8 @@ import CreateSaleDialog from '@/ui/layouts/create-sale-dialog/index.jsx'
 import { useState } from 'react'
 
 function SalesPage() {
-    const { data: sales, isLoading } = useGetSalesQuery()
+    const [page, setPage] = useState(1)
+    const { data: sales, isLoading } = useGetSalesQuery({ page })
     const deleteSale = useDeleteSaleMutation()
     const [isDialogOpen, setIsDialogOpen] = useState(false)
 
@@ -20,21 +21,25 @@ function SalesPage() {
         deleteSale.mutate({ id })
     }
 
+    const handlePaginationUpdate = (page) => {
+        setPage(page)
+    }
+
     return (
         <div className={ st.container }>
             { isLoading ? <Spin/> :
                 <>
                     <div className={ st.salesList }>
                         <SalesTable
-                            data={ sales }
+                            data={ sales.data }
                             onItemDelete={ handleDeleteSale }/>
                     </div>
                     <div className={ st.paginationContainer }>
                         <Pagination
-                            page={ 1 }
-                            pageSize={ 100 }
-                            total={ 900 }
-                            onUpdate={ null }/>
+                            page={ page }
+                            pageSize={ sales.pageSize }
+                            total={ sales.count }
+                            onUpdate={ handlePaginationUpdate }/>
                     </div>
                     <FloatingButton
                         icon={ Plus }

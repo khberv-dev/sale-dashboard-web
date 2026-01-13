@@ -10,8 +10,8 @@ export async function getSaleStats() {
     return res.data
 }
 
-export async function getAllSales() {
-    const res = await apiClient.get('sale/all')
+export async function getAllSales(page) {
+    const res = await apiClient.get(`sale/all?page=${ page }`)
 
     return res.data
 }
