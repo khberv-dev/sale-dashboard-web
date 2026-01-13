@@ -1,4 +1,4 @@
-import { Button, Dialog, Select } from '@gravity-ui/uikit'
+import { Button, Dialog, Select, TextInput } from '@gravity-ui/uikit'
 import st from '@/ui/layouts/edit-manager-dialog/main.module.scss'
 import { Controller, useForm } from 'react-hook-form'
 import { useCreateSaleMutation, useGetSaleTypeOptionsQuery } from '@/services/sale/query.js'
@@ -26,7 +26,8 @@ function CreateSaleDialog({ open, onClose }) {
             amount,
             type,
             date,
-            time
+            time,
+            contractNumber: data.contractNumber
         })
         reset()
         onClose()
@@ -37,6 +38,16 @@ function CreateSaleDialog({ open, onClose }) {
             <Dialog.Header caption={ 'Yangi sotuv' }/>
             <form onSubmit={ handleSubmit(onSubmit) }>
                 <Dialog.Body className={ st.formBody }>
+                    <Controller
+                        name={ 'contractNumber' }
+                        control={ control }
+                        rules={ formInputRules }
+                        render={ ({ field }) =>
+                            <TextInput
+                                placeholder={ 'Shartnoma raqami' }
+                                { ...field }/>
+                        }/>
+
                     <Controller
                         name={ 'amount' }
                         control={ control }
