@@ -20,3 +20,7 @@ export function formatDate(date) {
 export function extractNumber(str) {
     return Number(str.toString().replace(/\D+/g, ''))
 }
+
+export function leadZero(x, length = 2) {
+    return x.toString().padStart(length, '0')
+}

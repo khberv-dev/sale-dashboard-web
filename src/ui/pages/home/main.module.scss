@@ -6,3 +6,18 @@
   display: flex;
   gap: 16px;
 }
+
+.detailContainer {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+.managersResultContainer {
+  flex: 1;
+}
+
+.summaryContainer {
+  width: 40%;
+  padding: 8px;
+}

@@ -7,6 +7,8 @@ import { Spin } from '@gravity-ui/uikit'
 import useSocket from '@/services/socket.js'
 import { useEffect, useState } from 'react'
 import NewSaleDialog from '@/ui/layouts/new-sale-dialog/index.jsx'
+import DailySaleChart from '@/ui/components/daily-sale-chart/index.jsx'
+import MonthlySaleChart from '@/ui/components/monthly-sale-chart/index.jsx'
 
 function HomePage() {
     const { data: saleStats, isLoading } = useGetSaleStatsQuery()
@@ -49,7 +51,15 @@ function HomePage() {
                             topManagers={ saleStats.total }
                         />
                     </div>
-                    <ManagersResultTable data={ saleStats.total }/>
+                    <div className={ st.detailContainer }>
+                        <div className={ st.managersResultContainer }>
+                            <ManagersResultTable data={ saleStats.total }/>
+                        </div>
+                        <div className={ st.summaryContainer }>
+                            <DailySaleChart saleData={ saleStats.dailyStats }/>
+                            <MonthlySaleChart saleData={ saleStats.monthlyStats }/>
+                        </div>
+                    </div>
                     <NewSaleDialog
                         saleData={ newSaleData }
                         open={ !!newSaleData }
