@@ -9,11 +9,14 @@ import { useEffect, useState } from 'react'
 import NewSaleDialog from '@/ui/layouts/new-sale-dialog/index.jsx'
 import DailySaleChart from '@/ui/components/daily-sale-chart/index.jsx'
 import MonthlySaleChart from '@/ui/components/monthly-sale-chart/index.jsx'
+import FloatingButton from '@/ui/components/floating-button/index.jsx'
+import { VolumeFill, VolumeSlashFill } from '@gravity-ui/icons'
 
 function HomePage() {
     const { data: saleStats, isLoading } = useGetSaleStatsQuery()
     const socket = useSocket()
     const [newSaleData, setNewSaleData] = useState(null)
+    const [isSoundEnable, setIsSoundEnable] = useState(false)
 
     useEffect(() => {
         const queueAudio = new Audio('src/assets/queue.mp3')
@@ -23,7 +26,9 @@ function HomePage() {
         }
 
         socket.on('new-sale', data => {
-            queueAudio.play()
+            if (isSoundEnable) {
+                queueAudio.play()
+            }
             setNewSaleData(data)
 
             setTimeout(() => {
@@ -35,6 +40,10 @@ function HomePage() {
             socket.off('new-sale')
         }
     }, [socket])
+
+    const onToggleSoundClick = () => {
+        setIsSoundEnable(old => !old)
+    }
 
     return (
         <div className={ st.container }>
@@ -60,6 +69,9 @@ function HomePage() {
                             <MonthlySaleChart saleData={ saleStats.monthlyStats }/>
                         </div>
                     </div>
+                    <FloatingButton
+                        icon={ isSoundEnable ? VolumeFill : VolumeSlashFill }
+                        onClick={ onToggleSoundClick }/>
                     <NewSaleDialog
                         saleData={ newSaleData }
                         open={ !!newSaleData }
