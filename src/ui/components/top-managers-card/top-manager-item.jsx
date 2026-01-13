@@ -14,7 +14,7 @@ function TopManagerItem({ firstName, lastName, sale, avatar }) {
                 theme={ 'brand' }
                 imgUrl={ getAvatarUrl(avatar) }/>
             <Text variant={ 'body-2' }>{ fullName }</Text>
-            <Text variant={ 'body-1' } color={ 'positive' }>{ formatNumber(sale) }</Text>
+            <Text variant={ 'body-1' } color={ 'positive' }>{ formatNumber(sale) } so'm</Text>
         </Card>
     )
 }
