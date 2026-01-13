@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query'
 import {
     createSale,
     createSaleType,
+    deleteSale,
     getAllSales,
     getSaleStats,
     getSaleTypeOptions,
@@ -43,4 +44,9 @@ export const useCreateSaleTypeMutation = () => useInfoMutation({
 export const useUpdateSaleTypeMutation = () => useInfoMutation({
     mutationFn: ({ id, data }) => updateSaleType(id, data),
     queryKey: ['sale-types', 'sale-type-options']
+})
+
+export const useDeleteSaleMutation = () => useInfoMutation({
+    mutationFn: ({ id }) => deleteSale(id),
+    queryKey: ['sales']
 })

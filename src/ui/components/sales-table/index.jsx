@@ -1,5 +1,6 @@
-import { Table } from '@gravity-ui/uikit'
+import { Icon, Table, withTableActions } from '@gravity-ui/uikit'
 import { formatDate, formatNumber } from '@/utils/formatter.js'
+import { TrashBin } from '@gravity-ui/icons'
 
 const columns = [
     {
@@ -29,12 +30,31 @@ const columns = [
     }
 ]
 
-function SalesTable({ data }) {
+const TableWithActions = withTableActions(Table)
+
+function SalesTable({ data, onItemDelete }) {
+    const actions = (item) => [
+        {
+            text: "O'chirish",
+            icon: <Icon data={ TrashBin }/>,
+            theme: 'danger',
+            handler: () => {
+                onItemDelete(item.id)
+            }
+        }
+    ]
+
+    const rowDescriptor = () => ({
+        interactive: true
+    })
+
     return (
-        <Table
+        <TableWithActions
             width={ 'max' }
             data={ data }
-            columns={ columns }/>
+            columns={ columns }
+            getRowActions={ actions }
+            getRowDescriptor={ rowDescriptor }/>
     )
 }
 

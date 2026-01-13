@@ -45,3 +45,9 @@ export async function updateSaleType(id, data) {
 
     return res.data
 }
+
+export async function deleteSale(id) {
+    const res = await apiClient.delete(`sale/${ id }`)
+
+    return res.data
+}
