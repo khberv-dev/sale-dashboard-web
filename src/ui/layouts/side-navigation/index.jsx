@@ -6,7 +6,7 @@ import useLocalStorage from '@/hooks/useLocalStorage.js'
 import NavFooter from '@/ui/layouts/side-navigation/nav-footer.jsx'
 
 function SideNavigation({ children }) {
-    const user = useAuthContext()
+    const auth = useAuthContext()
     const [navState, setNavState] = useLocalStorage('nav', { compact: false })
     const location = useLocation()
     const nav = useNavigate()
@@ -43,7 +43,7 @@ function SideNavigation({ children }) {
             icon: Gear,
             link: 'settings'
         }
-    ].filter(item => !item.forAdmin || item.forAdmin && user.role === 'ADMIN')
+    ].filter(item => !item.forAdmin || item.forAdmin && auth.user.role === 'ADMIN')
         .map(item => ({
             ...item,
             current: location.pathname === `/${ item.link }`,
@@ -60,7 +60,7 @@ function SideNavigation({ children }) {
 
     const footer = () => {
         return <NavFooter
-            user={ user }
+            user={ auth.user }
             isCompact={ navState.compact }/>
     }
 
