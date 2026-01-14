@@ -1,8 +1,8 @@
 import st from './main.module.scss'
-import { Card, Text } from '@gravity-ui/uikit'
+import { Card, Label, Text } from '@gravity-ui/uikit'
 import { formatNumber } from '@/utils/formatter.js'
 
-function TotalSaleCard({ dailySale, totalSale, monthlySale, dailyPlan, monthlyPlan }) {
+function TotalSaleCard({ dailySale, totalSale, monthlySale, dailyPlan, monthPlan }) {
     return (
         <Card className={ st.card }>
             <div>
@@ -15,10 +15,10 @@ function TotalSaleCard({ dailySale, totalSale, monthlySale, dailyPlan, monthlyPl
                 &nbsp;&nbsp;
                 <Text variant={ 'body-2' } color={ 'positive' }>{ formatNumber(totalSale) } so'm</Text>
             </div>
-            {/*<div className={ st.progressContainer }>*/ }
-            {/*    <Label>{ formatNumber(dailySale) }/kuniga</Label>*/ }
-            {/*    <Label>Oylik { Math.floor(monthlySale / monthlyPlan * 100) }% bajarildi</Label>*/ }
-            {/*</div>*/ }
+            <div className={ st.progressContainer }>
+                <Label>{ (monthPlan / 30 / 1_000_000).toFixed(2) } mln/kuniga</Label>
+                <Label>Plan { Math.floor(monthlySale / monthPlan * 100) }% bajarildi</Label>
+            </div>
         </Card>
     )
 }
