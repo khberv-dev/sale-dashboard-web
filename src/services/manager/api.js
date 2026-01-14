@@ -27,3 +27,15 @@ export async function createManager(data) {
 
     return res.data
 }
+
+export async function setMonthPlan(plan) {
+    const res = await apiClient.put(`user/set-month-plan?plan=${ plan }`)
+
+    return res.data
+}
+
+export async function getMonthPlan() {
+    const res = await apiClient.get('user/month-plan')
+
+    return res.data
+}

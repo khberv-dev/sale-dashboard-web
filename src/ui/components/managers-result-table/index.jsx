@@ -1,36 +1,53 @@
-import { Avatar, Label, Table, Text } from '@gravity-ui/uikit'
+import { Avatar, Label, Progress, Table, Text } from '@gravity-ui/uikit'
 import { formatNumber } from '@/utils/formatter.js'
 
 const columns = [
     {
         id: 'index',
         name: '',
-        width: 40,
+        width: 20,
         template: (item, index) => (index + 1).toString()
     },
     {
         id: 'avatar',
         name: '',
-        template: item => {
+        template: (item) => {
             return <Avatar text={ item.firstName }/>
         },
-        width: 40
+        width: 30
     },
     {
         id: 'fullName',
         name: 'Ism',
-        template: item => item.firstName + ' ' + (item.lastName ? item.lastName : '')
+        width: 200,
+        template: (item) => item.firstName + ' ' + (item.lastName ? item.lastName : '')
     },
     {
         id: 'sale',
         name: 'Sotuv',
-        template: item => <Text
+        width: 60,
+        template: (item) => <Text
             color={ item.sale < 20000000 ? 'danger' : 'positive' }>{ formatNumber(item.sale) + " so'm" }</Text>
+    },
+    {
+        id: 'plan',
+        name: 'Plan',
+        width: 60,
+        template: (item) => Number(item.plan) / 1_000_000 + " mln so'm"
     },
     {
         id: 'salary',
         name: 'Maosh',
-        template: item => <Label theme={ 'success' }>{ formatNumber(item.salary) + " so'm" }</Label>
+        width: 60,
+        template: (item) => <Label theme={ 'success' }>{ formatNumber(item.salary) + " so'm" }</Label>
+    },
+    {
+        id: 'progress',
+        name: '',
+        template: (item) => <Progress
+            theme={ 'info' }
+            loading={ true }
+            value={ item.sale / item.plan * 100 }/>
     }
 ]
 
