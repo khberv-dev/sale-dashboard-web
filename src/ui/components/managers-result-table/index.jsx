@@ -44,10 +44,15 @@ const columns = [
     {
         id: 'progress',
         name: '',
-        template: (item) => <Progress
-            theme={ 'info' }
-            loading={ true }
-            value={ item.sale / item.plan * 100 }/>
+        template: (item) => {
+            const progress = item.sale / item.plan * 100
+            const isPlanCompleted = progress >= 100
+
+            return <Progress
+                theme={ isPlanCompleted ? 'success' : 'info' }
+                loading={ !isPlanCompleted }
+                value={ progress }/>
+        }
     }
 ]
 
