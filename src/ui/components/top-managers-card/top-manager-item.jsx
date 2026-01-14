@@ -13,8 +13,8 @@ function TopManagerItem({ firstName, lastName, sale, avatar }) {
                 text={ fullName }
                 theme={ 'brand' }
                 imgUrl={ getAvatarUrl(avatar) }/>
-            <Text variant={ 'body-2' }>{ fullName }</Text>
-            <Text variant={ 'body-1' }>{ formatNumber(sale) } so'm</Text>
+            <Text variant={ 'subheader-3' }>{ fullName }</Text>
+            <Text color={ 'light-primary' } variant={ 'body-1' }>{ formatNumber(sale) } so'm</Text>
         </Card>
     )
 }
