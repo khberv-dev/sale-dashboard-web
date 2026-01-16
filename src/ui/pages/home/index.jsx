@@ -57,7 +57,7 @@ function HomePage() {
                             monthlySale={ saleData.totalAmount }
                             monthPlan={ saleData.monthPlan }/>
                         <TopManagersCard
-                            topManagers={ saleData.total }
+                            data={ saleData.total }
                         />
                     </div>
                     <div className={ st.detailContainer }>

@@ -1,5 +1,6 @@
 import { Avatar, Label, Progress, Table, Text } from '@gravity-ui/uikit'
 import { formatNumber } from '@/utils/formatter.js'
+import { getAvatarUrl } from '@/utils/url-resolver.js'
 
 const columns = [
     {
@@ -12,7 +13,10 @@ const columns = [
         id: 'avatar',
         name: '',
         template: (item) => {
-            return <Avatar text={ item.firstName }/>
+            return <Avatar
+                text={ item.firstName }
+                imgUrl={ getAvatarUrl(item.avatar) }
+            />
         },
         width: 30
     },
@@ -57,10 +61,12 @@ const columns = [
 ]
 
 function ManagersResultTable({ data }) {
+    const sortedData = data.sort((a, b) => b.sale - a.sale)
+
     return (
         <Table
             width={ 'max' }
-            data={ data }
+            data={ sortedData }
             columns={ columns }/>
     )
 }
