@@ -52,10 +52,14 @@ const columns = [
             const progress = item.sale / item.plan * 100
             const isPlanCompleted = progress >= 100
 
-            return <Progress
-                theme={ isPlanCompleted ? 'success' : 'info' }
-                loading={ !isPlanCompleted }
-                value={ progress }/>
+            return <div>
+                <Progress
+                    theme={ isPlanCompleted ? 'success' : 'info' }
+                    loading={ !isPlanCompleted }
+                    text={ progress.toFixed(2) + '%' }
+                    value={ progress }/>
+                { !isPlanCompleted ? <Text>{ formatNumber(item.plan - item.sale) } qoldi</Text> : '' }
+            </div>
         }
     }
 ]
