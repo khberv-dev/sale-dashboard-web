@@ -56,9 +56,9 @@ const columns = [
                 <Progress
                     theme={ isPlanCompleted ? 'success' : 'info' }
                     loading={ !isPlanCompleted }
-                    text={ item.plan > 0 ? progress.toFixed(2) + '%' : 'Plan belgilanmagan' }
+                    // text={ item.plan > 0 ? progress.toFixed(2) + '%' : 'Plan belgilanmagan' }
                     value={ progress }/>
-                { !isPlanCompleted ? <Text>{ formatNumber(item.plan - item.sale) } qoldi</Text> : '' }
+                {/*{ !isPlanCompleted ? <Text>{ formatNumber(item.plan - item.sale) } qoldi</Text> : '' }*/ }
             </div>
         }
     }
