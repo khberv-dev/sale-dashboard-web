@@ -11,9 +11,9 @@ function TotalSaleCard({ dailySale, totalSale, monthlySale, dailyPlan, monthPlan
                 <Text variant={ 'header-1' } color={ 'positive' }>{ formatNumber(dailySale) } so'm</Text>
             </div>
             <div>
-                <Text variant={ 'body-2' }>Umumiy: </Text>
-                &nbsp;&nbsp;
-                <Text variant={ 'body-2' } color={ 'positive' }>{ formatNumber(totalSale) } so'm</Text>
+                <Text variant={ 'subheader-1' }>Umumiy: </Text>
+                <br/>
+                <Text variant={ 'header-2' } color={ 'positive' }>{ formatNumber(totalSale) } so'm</Text>
             </div>
             <div className={ st.progressContainer }>
                 <Label>{ (monthPlan / 30 / 1_000_000).toFixed(2) } mln/kuniga</Label>
