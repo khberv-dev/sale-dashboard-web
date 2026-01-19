@@ -16,9 +16,9 @@ function TotalSaleCard({ dailySale, totalSale, monthlySale, dailyPlan, monthPlan
                     <br/>
                     <Text variant={ 'header-2' } color={ 'positive' }>{ formatNumber(totalSale) } so'm</Text>
                 </div>
-                <div>
+                <div className={ st.planContainer }>
                     <Text variant={ 'subheader-1' } color={ 'info' }>Maqsad: </Text>
-                    <Text variant={ 'subheader-1' } color={ 'hint' }>{ formatNumber(monthPlan) } so'm</Text>
+                    <Text variant={ 'subheader-1' } color={ 'positive-heavy' }>{ formatNumber(monthPlan) } so'm</Text>
                 </div>
             </div>
             <div className={ st.progressContainer }>
