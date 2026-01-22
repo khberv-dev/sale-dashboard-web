@@ -1,5 +1,6 @@
 import { useMutation, useQuery } from '@tanstack/react-query'
-import { getUserInfo, signIn } from './api.js'
+import { getUserInfo, signIn, updatePassword } from './api.js'
+import { useInfoMutation } from '@/services/query.js'
 
 export const useSignInMutation = () => useMutation({
     mutationFn: ({ username, password }) => signIn(username, password),
@@ -12,4 +13,8 @@ export const useSignInMutation = () => useMutation({
 export const useUserInfoQuery = () => useQuery({
     queryKey: ['auth'],
     queryFn: getUserInfo
+})
+
+export const useUpdatePasswordMutation = () => useInfoMutation({
+    mutationFn: (data => updatePassword(data))
 })

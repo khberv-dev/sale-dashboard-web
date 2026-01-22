@@ -5,3 +5,10 @@
 .profileCard {
   padding: 8px;
 }
+
+.formContainer {
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}

@@ -9,3 +9,9 @@ export async function getUserInfo() {
     const res = await apiClient.get('user/me')
     return res.data
 }
+
+export async function updatePassword(data) {
+    const res = await apiClient.post('user/update-password', data)
+
+    return res.data
+}
