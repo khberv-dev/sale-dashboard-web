@@ -6,6 +6,7 @@ import ManagersPage from '@/ui/pages/managers/index.jsx'
 import SalesPage from '@/ui/pages/sales/index.jsx'
 import SaleTypesPage from '@/ui/pages/sale-types/index.jsx'
 import SettingsPage from '@/ui/pages/settings/index.jsx'
+import ContractPage from '@/ui/pages/contract/index.jsx'
 
 function App() {
     return (
@@ -18,6 +19,7 @@ function App() {
                     <Route path={ '/sales' } element={ <SalesPage/> }/>
                     <Route path={ '/sale-types' } element={ <SaleTypesPage/> }/>
                     <Route path={ '/managers' } element={ <ManagersPage/> }/>
+                    <Route path={ '/contracts' } element={ <ContractPage/> }/>
                     <Route path={ '/settings' } element={ <SettingsPage/> }/>
                 </Route>
             </Routes>
