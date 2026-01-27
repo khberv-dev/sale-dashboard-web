@@ -43,9 +43,14 @@ function EditManagerDialog({ manager, open, onClose }) {
                         placeholder={ 'Login' }
                         { ...register('username') }/>
                     <TextInput
+                        defaultValue={ manager.accountId }
+                        placeholder={ 'amoCRM akkaunt' }
+                        { ...register('crmAccount') }/>
+                    <TextInput
                         type={ 'password' }
                         placeholder={ 'Parol' }
                         { ...register('password') }/>
+                    <br/>
                     <PhotoUploadPreview
                         imageUrl={ getAvatarUrl(manager.avatar) }
                         onUpload={ onUploadAvatar }/>

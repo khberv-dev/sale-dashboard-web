@@ -23,8 +23,11 @@ const columns = [
     {
         id: 'fullName',
         name: 'Ism',
-        width: 200,
-        template: (item) => item.firstName + ' ' + (item.lastName ? item.lastName : '')
+        width: 120,
+        template: (item) => <>
+            <div>{ item.firstName }</div>
+            <div>{ item.lastName }</div>
+        </>
     },
     {
         id: 'sale',
@@ -32,6 +35,13 @@ const columns = [
         width: 60,
         template: (item) => <Text
             color={ item.sale < 20000000 ? 'danger' : 'positive' }>{ formatNumber(item.sale) + " so'm" }</Text>
+    },
+    {
+        id: 'conversion',
+        name: 'Konversiya',
+        width: 60,
+        template: (item) => item.leadCount > 0 ?
+            <Label theme={ 'info' }>{ (item.saleCount / item.leadCount * 100).toFixed(2) + '%' }</Label> : '-'
     },
     {
         id: 'plan',

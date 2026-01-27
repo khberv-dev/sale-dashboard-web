@@ -34,6 +34,11 @@ const columns = [
         name: 'Login'
     },
     {
+        id: 'crmAccount',
+        name: 'amoCRM',
+        template: (item) => item.accountId
+    },
+    {
         id: 'status',
         name: 'Status',
         template: (item) => {
