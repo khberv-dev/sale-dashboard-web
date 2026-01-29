@@ -12,8 +12,11 @@ import MonthlySaleChart from '@/ui/components/monthly-sale-chart/index.jsx'
 import FloatingButton from '@/ui/components/floating-button/index.jsx'
 import { VolumeFill, VolumeSlashFill } from '@gravity-ui/icons'
 import queueSound from '@/assets/queue.mp3'
+import confetti from 'canvas-confetti'
+import { useQueryClient } from "@tanstack/react-query";
 
 function HomePage() {
+    const queryClient = useQueryClient()
     const { data: saleData, isLoading } = useGetSaleStatsQuery()
     const socket = useSocket()
     const [newSaleData, setNewSaleData] = useState(null)
@@ -27,23 +30,30 @@ function HomePage() {
         }
 
         socket.on('new-sale', data => {
-            if (isSoundEnable) {
-                queueAudio.play()
-            }
+            queueAudio.play()
             setNewSaleData(data)
+
+            if (data.is100MPassed) {
+                confetti({
+                    particleCount: 450,
+                    spread: 180,
+                    origin: { y: 0.2 }
+                })
+            }
 
             setTimeout(() => {
                 setNewSaleData(null)
+                queryClient.invalidateQueries({ queryKey: ['sale-stats'] })
             }, 5000)
         })
 
         return () => {
             socket.off('new-sale')
         }
-    }, [socket, isSoundEnable])
+    }, [socket, isSoundEnable, queryClient])
 
     const onToggleSoundClick = () => {
-        setIsSoundEnable(old => !old)
+        setIsSoundEnable(true)
     }
 
     return (
