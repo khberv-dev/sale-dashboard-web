@@ -1,5 +1,5 @@
 import { Avatar, Icon, Label, Table, withTableActions } from '@gravity-ui/uikit'
-import { formatDate } from '@/utils/formatter.js'
+import { formatDate, formatNumber } from '@/utils/formatter.js'
 import { Pencil } from '@gravity-ui/icons'
 import { getAvatarUrl } from '@/utils/url-resolver.js'
 
@@ -32,6 +32,11 @@ const columns = [
     {
         id: 'username',
         name: 'Login'
+    },
+    {
+        id: 'salePlan',
+        name: 'Oylik plan',
+        template: (item) => formatNumber(item.plan)
     },
     {
         id: 'crmAccount',

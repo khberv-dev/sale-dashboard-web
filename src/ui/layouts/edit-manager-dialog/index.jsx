@@ -1,17 +1,25 @@
 import st from './main.module.scss'
 import { Button, Dialog, TextInput } from '@gravity-ui/uikit'
-import { useForm } from 'react-hook-form'
+import { Controller, useForm } from 'react-hook-form'
 import { useUpdateManagerMutation, useUploadManagerAvatarMutation } from '@/services/manager/query.js'
 import PhotoUploadPreview from '@/ui/components/photo-upload-preview/index.jsx'
 import { getAvatarUrl } from '@/utils/url-resolver.js'
+import NumberInput from "@/ui/components/number-input/index.jsx";
+import { extractNumber, formatNumber } from "@/utils/formatter.js";
 
 function EditManagerDialog({ manager, open, onClose }) {
-    const { register, handleSubmit, reset } = useForm()
+    const { register, handleSubmit, reset, control } = useForm()
     const updateManager = useUpdateManagerMutation()
     const uploadManagerAvatar = useUploadManagerAvatarMutation()
 
     const onSubmit = async (data) => {
-        await updateManager.mutateAsync({ id: manager.id, data })
+        await updateManager.mutateAsync({
+            id: manager.id,
+            data: {
+                ...data,
+                plan: extractNumber(data.plan)
+            }
+        })
         reset()
         onClose()
     }
@@ -50,10 +58,20 @@ function EditManagerDialog({ manager, open, onClose }) {
                         defaultValue={ manager.sipNumber }
                         placeholder={ 'SIP raqam' }
                         { ...register('sipNumber') }/>
+                    <Controller
+                        name={ 'plan' }
+                        control={ control }
+                        render={ ({ field }) =>
+                            <NumberInput
+                                defaultValue={ formatNumber(manager.plan) }
+                                placeholder={ 'Oylik plan' }
+                                { ...field }/>
+                        }/>
                     <TextInput
                         type={ 'password' }
                         placeholder={ 'Parol' }
                         { ...register('password') }/>
+                    <br/>
                     <PhotoUploadPreview
                         imageUrl={ getAvatarUrl(manager.avatar) }
                         onUpload={ onUploadAvatar }/>
