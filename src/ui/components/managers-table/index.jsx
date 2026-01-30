@@ -39,6 +39,10 @@ const columns = [
         template: (item) => item.accountId
     },
     {
+        id: 'sipNumber',
+        name: 'SIP raqam'
+    },
+    {
         id: 'status',
         name: 'Status',
         template: (item) => {

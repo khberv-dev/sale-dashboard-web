@@ -47,10 +47,13 @@ function EditManagerDialog({ manager, open, onClose }) {
                         placeholder={ 'amoCRM akkaunt' }
                         { ...register('crmAccount') }/>
                     <TextInput
+                        defaultValue={ manager.sipNumber }
+                        placeholder={ 'SIP raqam' }
+                        { ...register('sipNumber') }/>
+                    <TextInput
                         type={ 'password' }
                         placeholder={ 'Parol' }
                         { ...register('password') }/>
-                    <br/>
                     <PhotoUploadPreview
                         imageUrl={ getAvatarUrl(manager.avatar) }
                         onUpload={ onUploadAvatar }/>

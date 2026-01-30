@@ -44,6 +44,11 @@ const columns = [
             <Label theme={ 'info' }>{ (item.saleCount / item.leadCount * 100).toFixed(2) + '%' }</Label> : '-'
     },
     {
+        id: 'callDuration',
+        name: 'Calltime',
+        template: (item) => formatNumber(Math.floor(item.callDuration / 60)) + ' min'
+    },
+    {
         id: 'plan',
         name: 'Plan',
         width: 60,
