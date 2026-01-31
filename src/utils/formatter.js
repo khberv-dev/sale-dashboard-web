@@ -24,3 +24,11 @@ export function extractNumber(str) {
 export function leadZero(x, length = 2) {
     return x.toString().padStart(length, '0')
 }
+
+export function formatTime(seconds) {
+    const hours = Math.floor(seconds / 60 / 60)
+    const minutes = Math.floor((seconds - hours * 60 * 60) / 60)
+    const dSeconds = seconds - hours * 60 * 60 - minutes * 60
+
+    return leadZero(hours) + ':' + leadZero(minutes) + ':' + leadZero(dSeconds)
+}

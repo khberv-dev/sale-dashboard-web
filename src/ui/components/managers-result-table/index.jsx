@@ -1,5 +1,5 @@
 import { Avatar, Label, Progress, Table, Text } from '@gravity-ui/uikit'
-import { formatNumber } from '@/utils/formatter.js'
+import { formatNumber, formatTime } from '@/utils/formatter.js'
 import { getAvatarUrl } from '@/utils/url-resolver.js'
 
 const columns = [
@@ -46,7 +46,7 @@ const columns = [
     {
         id: 'callDuration',
         name: 'Calltime',
-        template: (item) => formatNumber(Math.floor(item.callDuration / 60)) + ' min'
+        template: (item) => formatTime(item.callDuration)
     },
     {
         id: 'plan',
