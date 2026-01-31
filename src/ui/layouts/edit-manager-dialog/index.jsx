@@ -61,9 +61,9 @@ function EditManagerDialog({ manager, open, onClose }) {
                     <Controller
                         name={ 'plan' }
                         control={ control }
+                        defaultValue={ formatNumber(manager.plan) }
                         render={ ({ field }) =>
                             <NumberInput
-                                defaultValue={ formatNumber(manager.plan) }
                                 placeholder={ 'Oylik plan' }
                                 { ...field }/>
                         }/>
