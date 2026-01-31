@@ -4,7 +4,7 @@ import dayjs from 'dayjs'
 export async function getSaleStats() {
     const now = dayjs()
     const startDate = now.startOf('month').format('YYYY-MM-DD')
-    const endDate = now.endOf('month').format('YYYY-MM-DD')
+    const endDate = now.endOf('month').format('YYYY-MM-DD HH:mm:ss')
     const res = await apiClient.get(`sale/stats?startDate=${ startDate }&endDate=${ endDate }`)
 
     return res.data
