@@ -6,6 +6,7 @@ import NumberInput from '@/ui/components/number-input/index.jsx'
 import { useGetMonthPlanQuery, useSetMonthPlanMutation } from '@/services/manager/query.js'
 import { extractNumber, formatNumber } from '@/utils/formatter.js'
 import { useUpdatePasswordMutation } from '@/services/auth/query.js'
+import LinkTelegramButton from "@/ui/components/link-telegram-button/index.jsx";
 
 function SettingsPage() {
     const monthPlan = useGetMonthPlanQuery()
@@ -74,6 +75,8 @@ function SettingsPage() {
                     />
                     <Button view={ 'action' } type={ 'submit' }>O'zgartirish</Button>
                 </form>
+                <br/>
+                <LinkTelegramButton userId={ auth.user.id }/>
                 <br/><br/>
                 <Button
                     onClick={ onLogoutClick }
