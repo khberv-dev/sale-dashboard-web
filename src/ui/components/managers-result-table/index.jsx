@@ -34,7 +34,7 @@ const columns = [
         name: 'Sotuv',
         width: 60,
         template: (item) => <Text
-            color={ item.sale < 20000000 ? 'danger' : 'positive' }>{ formatNumber(item.sale) + " so'm" }</Text>
+            color={ item.sale < 25000000 ? 'danger' : 'positive' }>{ formatNumber(item.sale) + " so'm" }</Text>
     },
     {
         id: 'conversion',
