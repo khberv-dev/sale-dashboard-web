@@ -1,7 +1,13 @@
 import { QueryClient, useMutation, useQueryClient } from '@tanstack/react-query'
 import { useToaster } from '@gravity-ui/uikit'
 
-const queryClient = new QueryClient()
+const queryClient = new QueryClient({
+    defaultOptions: {
+        queries: {
+            refetchOnWindowFocus: false,
+        }
+    }
+})
 
 export function useInfoMutation({ mutationFn, queryKey }) {
     const client = useQueryClient()

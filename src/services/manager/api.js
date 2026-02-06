@@ -39,3 +39,15 @@ export async function getMonthPlan() {
 
     return res.data
 }
+
+export async function getTodayAttendances() {
+    const res = await apiClient.get('user/attendances')
+
+    return res.data
+}
+
+export async function registerAttendance(data) {
+    const res = await apiClient.post('user/register-attendance', data)
+
+    return res.data
+}

@@ -3,6 +3,8 @@ import {
     createManager,
     getAllManagers,
     getMonthPlan,
+    getTodayAttendances,
+    registerAttendance,
     setMonthPlan,
     updateManager,
     uploadManagerAvatar
@@ -37,4 +39,13 @@ export const useSetMonthPlanMutation = () => useInfoMutation({
 export const useGetMonthPlanQuery = () => useQuery({
     queryKey: ['month-plan'],
     queryFn: getMonthPlan
+})
+
+export const useGetTodayAttendances = () => useQuery({
+    queryKey: ['attendances'],
+    queryFn: getTodayAttendances
+})
+
+export const useRegisterAttendanceMutation = () => useInfoMutation({
+    mutationFn: (data) => registerAttendance(data)
 })
