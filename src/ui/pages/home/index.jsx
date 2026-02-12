@@ -65,7 +65,8 @@ function HomePage() {
                             dailySale={ saleData.dailyAmount }
                             totalSale={ saleData.totalAmount }
                             monthlySale={ saleData.totalAmount }
-                            monthPlan={ saleData.monthPlan }/>
+                            monthPlan={ saleData.monthPlan }
+                            saleRate={ saleData.saleRate }/>
                         <TopManagersCard
                             data={ saleData.total }
                         />
