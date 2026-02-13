@@ -32,3 +32,15 @@ export function formatTime(seconds) {
 
     return leadZero(hours) + ':' + leadZero(minutes) + ':' + leadZero(dSeconds)
 }
+
+export function formatDuration(str) {
+    const digits = str.replaceAll(/[^\d ]/g, '').slice(-6)
+
+    return digits.replace(/(.{2})(?=.)/g, '$1:').trim();
+}
+
+export function extractDurationSeconds(str) {
+    const [hours, minutes, seconds] = str.split(':')
+
+    return (+hours) * 60 * 60 + (+minutes) * 60 + (+seconds)
+}

@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 import {
+    addCall,
     createManager,
     getAllManagers,
     getMonthPlan,
@@ -48,4 +49,8 @@ export const useGetTodayAttendances = () => useQuery({
 
 export const useRegisterAttendanceMutation = () => useInfoMutation({
     mutationFn: (data) => registerAttendance(data)
+})
+
+export const useAddCallMutation = () => useInfoMutation({
+    mutationFn: (data) => addCall(data)
 })

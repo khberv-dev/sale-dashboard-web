@@ -51,3 +51,9 @@ export async function registerAttendance(data) {
 
     return res.data
 }
+
+export async function addCall(data) {
+    const res = await apiClient.post('manager/add-call', data)
+
+    return res.data
+}

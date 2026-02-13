@@ -1,6 +1,6 @@
 import { Avatar, Icon, Label, Table, withTableActions } from '@gravity-ui/uikit'
 import { formatDate, formatNumber } from '@/utils/formatter.js'
-import { Pencil } from '@gravity-ui/icons'
+import { Headphones, Pencil } from '@gravity-ui/icons'
 import { getAvatarUrl } from '@/utils/url-resolver.js'
 
 const columns = [
@@ -63,7 +63,7 @@ const columns = [
 
 const TableWithActions = withTableActions(Table)
 
-function ManagersTable({ data, onItemEdit }) {
+function ManagersTable({ data, onItemEdit, onAddCall }) {
     const actions = (item) => [
         {
             text: 'Tahrirlash',
@@ -71,7 +71,14 @@ function ManagersTable({ data, onItemEdit }) {
             handler: () => {
                 onItemEdit(item)
             }
-        }
+        },
+        {
+            text: "Call qo'shish",
+            icon: <Icon data={ Headphones }/>,
+            handler: () => {
+                onAddCall(item)
+            }
+        },
     ]
 
     return (
