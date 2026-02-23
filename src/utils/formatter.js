@@ -34,7 +34,7 @@ export function formatTime(seconds) {
 }
 
 export function formatDuration(str) {
-    const digits = str.replaceAll(/[^\d ]/g, '').slice(-6)
+    const digits = str.toString().replaceAll(/[^\d ]/g, '').slice(-6)
 
     return digits.replace(/(.{2})(?=.)/g, '$1:').trim();
 }

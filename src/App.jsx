@@ -8,12 +8,14 @@ import SaleTypesPage from '@/ui/pages/sale-types/index.jsx'
 import SettingsPage from '@/ui/pages/settings/index.jsx'
 import ContractPage from '@/ui/pages/contract/index.jsx'
 import AttendancePage from "@/ui/pages/attendance/index.jsx";
+import DashboardPage from "@/ui/pages/dashboard/index.jsx";
 
 function App() {
     return (
         <BrowserRouter>
             <Routes>
                 <Route path={ '/login' } element={ <LoginPage/> }/>
+                <Route path={ 'dashboard' } element={ <DashboardPage/> }/>
 
                 <Route element={ <PrivateRoutes/> }>
                     <Route path={ '/' } element={ <HomePage/> }/>

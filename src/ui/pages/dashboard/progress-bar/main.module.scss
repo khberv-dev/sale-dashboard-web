@@ -1,0 +1,15 @@
+.progressContainer {
+  position: relative;
+  background: #252935;
+  height: 4px;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progressBar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  border-radius: 2px;
+}

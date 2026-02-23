@@ -1,0 +1,56 @@
+.container {
+  margin-top: 16px;
+  padding: 16px;
+  border: 1px solid #252935;
+  border-radius: 12px;
+  background: #13161e;
+
+  tbody tr {
+    color: #6b7280;
+    font-family: 'DM Mono', monospace;
+    height: 50px;
+
+    td {
+      border-bottom: .6px solid #6b7280;
+    }
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  height: 40px;
+}
+
+.headerTitle {
+  font-size: 14px;
+  color: #6b7280;
+  font-family: 'DM Mono', monospace;
+}
+
+.managerName {
+  font-family: 'Sora', sans-serif;
+
+  span:first-child {
+    color: #e8eaf0;
+    font-size: 13px;
+  }
+
+  span:last-child {
+    color: #6b7280;
+    font-size: 12px;
+  }
+}
+
+.managerSale {
+  font-size: 13px;
+  color: #e8eaf0;
+}
+
+.managerPlan {
+  font-size: 13px;
+}
+
+.managerSaleRate {
+  color: #23c45f;
+}

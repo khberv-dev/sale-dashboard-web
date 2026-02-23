@@ -1,0 +1,81 @@
+.card {
+  position: relative;
+  padding: 16px;
+  border: 1px solid #252935;
+  border-radius: 12px;
+  background: #13161e;
+  overflow: hidden;
+}
+
+.headline {
+  position: absolute;
+  height: 2px;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.head {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 16px;
+
+  svg {
+    color: #6b7280;
+  }
+}
+
+.headTitle {
+  font-family: 'Sora', sans-serif;
+  font-size: 11px;
+  color: #6b7280;
+}
+
+.summary {
+  font-size: 28px;
+  font-family: 'DM Mono', monospace;
+  color: #e8eaf0;
+  margin-bottom: 8px;
+}
+
+.progressIndicator {
+  color: #f97316;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+}
+
+.progressInfo {
+  color: #6b7280;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+}
+
+.topManagerItem {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.orderBadge {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  font-size: 11px;
+}
+
+.managerName {
+  font-family: 'Sora', sans-serif;
+  font-size: 11px;
+  color: #e8eaf0;
+}
+
+.managerSale {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: #2dd4bf;
+}
