@@ -1,23 +1,26 @@
 import st from './main.module.scss'
-import { Button, Checkbox, Dialog, TextInput } from '@gravity-ui/uikit'
+import { Button, Checkbox, Dialog, Select, TextInput } from '@gravity-ui/uikit'
 import { Controller, useForm } from 'react-hook-form'
 import { useUpdateManagerMutation, useUploadManagerAvatarMutation } from '@/services/manager/query.js'
 import PhotoUploadPreview from '@/ui/components/photo-upload-preview/index.jsx'
 import { getAvatarUrl } from '@/utils/url-resolver.js'
-import NumberInput from "@/ui/components/number-input/index.jsx";
-import { extractNumber, formatNumber } from "@/utils/formatter.js";
-import { useEffect } from "react";
+import NumberInput from "@/ui/components/number-input/index.jsx"
+import { extractNumber, formatNumber } from "@/utils/formatter.js"
+import { useEffect } from "react"
+import { useGetTeams } from "@/services/team/query.js"
 
 function EditManagerDialog({ manager, open, onClose }) {
     const { register, handleSubmit, reset, control } = useForm()
     const updateManager = useUpdateManagerMutation()
     const uploadManagerAvatar = useUploadManagerAvatarMutation()
+    const { data: teams } = useGetTeams()
 
     const onSubmit = async (data) => {
         await updateManager.mutateAsync({
             id: manager.id,
             data: {
                 ...data,
+                teamId: data['teamId'] ? data['teamId'] : null,
                 plan: extractNumber(data.plan)
             }
         })
@@ -76,6 +79,21 @@ function EditManagerDialog({ manager, open, onClose }) {
                         type={ 'password' }
                         placeholder={ 'Parol' }
                         { ...register('password') }/>
+
+                    <Controller
+                        control={ control }
+                        name={ 'teamId' }
+                        defaultValue={ manager.teamId }
+                        render={ ({ field }) =>
+                            <Select
+                                value={ field.value != null ? [String(field.value)] : [] }
+                                onUpdate={ (val) => field.onChange(val[0]) }
+                                options={ (teams ?? []).map((team) => ({
+                                    value: String(team.id),
+                                    content: team.name,
+                                })) }
+                            /> }/>
+
                     <Controller name={ 'isActive' } control={ control } defaultValue={ manager.isActive }
                                 render={ ({ field }) =>
                                     <Checkbox checked={ field.value }

@@ -48,6 +48,10 @@ const columns = [
         name: 'SIP raqam'
     },
     {
+        id: 'team',
+        name: 'Guruh'
+    },
+    {
         id: 'status',
         name: 'Status',
         template: (item) => {

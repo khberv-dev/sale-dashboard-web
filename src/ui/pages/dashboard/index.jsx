@@ -1,21 +1,22 @@
 import st from './main.module.scss'
-import AuthContextProvider from "@/providers/auth/index.jsx";
-import { useGetSaleStatsQuery } from "@/services/sale/query.js";
-import { Spin } from "@gravity-ui/uikit";
-import SummaryCard from "@/ui/pages/dashboard/elements/summary-card/index.jsx";
-import { ClockIcon, DateIcon, HeartBeatIcon, PeopleIcon } from "@/ui/pages/dashboard/elements/icons.jsx";
-import LineChart from "@/ui/pages/dashboard/elements/line-chart/index.jsx";
-import dayjs from "dayjs";
-import ManagersResult from "@/ui/pages/dashboard/elements/managers-result/index.jsx";
-import NewSaleDialog from "@/ui/layouts/new-sale-dialog/index.jsx";
-import { useEffect, useState } from "react";
-import queueSound from "@/assets/queue.mp3";
-import confetti from "canvas-confetti";
-import useSocket from "@/services/socket.js";
-import { useQueryClient } from "@tanstack/react-query";
+import AuthContextProvider from "@/providers/auth/index.jsx"
+import { useGetSaleStatsQuery } from "@/services/sale/query.js"
+import { Spin, Switch } from "@gravity-ui/uikit"
+import SummaryCard from "@/ui/pages/dashboard/elements/summary-card/index.jsx"
+import { ClockIcon, DateIcon, HeartBeatIcon, PeopleIcon } from "@/ui/pages/dashboard/elements/icons.jsx"
+import LineChart from "@/ui/pages/dashboard/elements/line-chart/index.jsx"
+import dayjs from "dayjs"
+import ManagersResult from "@/ui/pages/dashboard/elements/managers-result/index.jsx"
+import NewSaleDialog from "@/ui/layouts/new-sale-dialog/index.jsx"
+import { useEffect, useState } from "react"
+import queueSound from "@/assets/queue.mp3"
+import confetti from "canvas-confetti"
+import useSocket from "@/services/socket.js"
+import { useQueryClient } from "@tanstack/react-query"
 
 function DashboardPage() {
-    const { data: saleData, isLoading } = useGetSaleStatsQuery()
+    const [byTeam, setByTeam] = useState(false)
+    const { data: saleData, isLoading } = useGetSaleStatsQuery(byTeam)
     const dateTime = dayjs().format('DD MMM. YYYY - HH:mm')
     const [newSaleData, setNewSaleData] = useState(null)
     const socket = useSocket()
@@ -67,8 +68,19 @@ function DashboardPage() {
                             { dayjs().format('MMM YYYY') }
                         </div>
                     </div>
-                    <div className={ st.liveDateTime }>
-                        { dateTime }
+                    <div style={ { display: 'flex', alignItems: 'center', gap: '20px' } }>
+                        <div style={ { color: '#ffffff' } }>
+                            <span>Umumiy</span>
+                            &nbsp;
+                            <Switch
+                                checked={ byTeam }
+                                onUpdate={ setByTeam }/>
+                            &nbsp;
+                            <span>Jamoa</span>
+                        </div>
+                        <div className={ st.liveDateTime }>
+                            { dateTime }
+                        </div>
                     </div>
                 </div>
                 <div className={ st.summary }>
