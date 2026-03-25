@@ -41,6 +41,17 @@ function EditManagerDialog({ manager, open, onClose }) {
         return
     }
 
+    const teamOptions = [
+        {
+            value: null,
+            content: 'Hech qaysi'
+        },
+        ...(teams ?? []).map((team) => ({
+            value: String(team.id),
+            content: team.name,
+        }))
+    ]
+
     return (
         <Dialog size={ 'm' } open={ open } onClose={ onClose }>
             <Dialog.Header caption={ 'Sotuv menejer profili' }/>
@@ -88,10 +99,7 @@ function EditManagerDialog({ manager, open, onClose }) {
                             <Select
                                 value={ field.value != null ? [String(field.value)] : [] }
                                 onUpdate={ (val) => field.onChange(val[0]) }
-                                options={ (teams ?? []).map((team) => ({
-                                    value: String(team.id),
-                                    content: team.name,
-                                })) }
+                                options={ [...teamOptions] }
                             /> }/>
 
                     <Controller name={ 'isActive' } control={ control } defaultValue={ manager.isActive }
