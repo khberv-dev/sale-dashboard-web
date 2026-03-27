@@ -1,7 +1,7 @@
 import st from './main.module.scss'
 import { Button, Card, Label } from '@gravity-ui/uikit'
 import TopManagerItem from '@/ui/components/top-managers-card/top-manager-item.jsx'
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom"
 
 function TopManagersCard({ data }) {
     const navigate = useNavigate()

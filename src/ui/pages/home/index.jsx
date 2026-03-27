@@ -3,7 +3,7 @@ import TotalSaleCard from '@/ui/components/total-sale-card/index.jsx'
 import TopManagersCard from '@/ui/components/top-managers-card/index.jsx'
 import ManagersResultTable from '@/ui/components/managers-result-table/index.jsx'
 import { useGetSaleStatsQuery } from '@/services/sale/query.js'
-import { Spin } from '@gravity-ui/uikit'
+import { Spin, Switch } from '@gravity-ui/uikit'
 import useSocket from '@/services/socket.js'
 import { useEffect, useState } from 'react'
 import NewSaleDialog from '@/ui/layouts/new-sale-dialog/index.jsx'
@@ -16,8 +16,9 @@ import confetti from 'canvas-confetti'
 import { useQueryClient } from "@tanstack/react-query";
 
 function HomePage() {
+    const [byTeam, setByTeam] = useState(false)
     const queryClient = useQueryClient()
-    const { data: saleData, isLoading } = useGetSaleStatsQuery()
+    const { data: saleData, isLoading } = useGetSaleStatsQuery(byTeam)
     const socket = useSocket()
     const [newSaleData, setNewSaleData] = useState(null)
     const [isSoundEnable, setIsSoundEnable] = useState(false)
@@ -71,6 +72,17 @@ function HomePage() {
                             data={ saleData.total }
                         />
                     </div>
+                    <br/>
+                    <div>
+                        <span>Umumiy</span>
+                        &nbsp;
+                        <Switch
+                            checked={ byTeam }
+                            onUpdate={ setByTeam }/>
+                        &nbsp;
+                        <span>Jamoa</span>
+                    </div>
+                    <br/>
                     <div className={ st.detailContainer }>
                         <div className={ st.managersResultContainer }>
                             <ManagersResultTable data={ saleData.total }/>
