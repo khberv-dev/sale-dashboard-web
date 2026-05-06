@@ -5,7 +5,7 @@ function useSocket() {
     const ref = useRef(null)
 
     useEffect(() => {
-        ref.current = io(import.meta.env.VITE_API_URL, {
+        ref.current = io(import.meta.env.VITE_WS_URL, {
             autoConnect: true
         })
 
