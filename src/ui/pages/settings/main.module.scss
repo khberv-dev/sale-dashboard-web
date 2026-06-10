@@ -1,14 +1,179 @@
-.container {
-  padding: 8px;
+.page {
+  min-height: 100vh;
+  background: #f4f6f9;
+  padding: 28px 24px;
 }
 
-.profileCard {
-  padding: 8px;
-}
-
-.formContainer {
-  width: fit-content;
+.inner {
+  max-width: 640px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 16px;
+}
+
+/* ── Profile card ── */
+
+.profileCard {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.profileBanner {
+  height: 72px;
+  background: linear-gradient(120deg, #4f8ef7 0%, #2dd4bf 100%);
+}
+
+.profileBody {
+  display: flex;
+  align-items: flex-end;
+  gap: 16px;
+  padding: 0 24px 20px;
+  margin-top: -28px;
+}
+
+.profileAvatar {
+  flex-shrink: 0;
+  box-shadow: 0 0 0 3px #fff;
+  border-radius: 50%;
+}
+
+.profileInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-bottom: 2px;
+}
+
+.profileName {
+  line-height: 1.2;
+}
+
+.profileUsername {
+  color: #6b7280;
+}
+
+/* ── Section cards ── */
+
+.card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 20px 24px;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.iconWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.divider {
+  height: 1px;
+  background: #f3f4f6;
+  margin: 16px 0;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  // Force Gravity UI TextInput to fill the card width
+  :global(.g-text-input) {
+    width: 100%;
+  }
+}
+
+/* ── Integration row ── */
+
+.integrationRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.integrationLabel {
+  flex: 1;
+}
+
+/* ── Logout card ── */
+
+.logoutCard {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 20px;
+  background: #fff;
+  border: 1px solid #fde8e8;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, transform 0.1s;
+  user-select: none;
+
+  &:hover {
+    background: #fff5f5;
+    border-color: #fca5a5;
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+    background: #fee2e2;
+  }
+}
+
+.logoutIconWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: #fee2e2;
+  color: #dc2626;
+  flex-shrink: 0;
+}
+
+.logoutText {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.logoutTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: #dc2626;
+}
+
+.logoutSub {
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+.logoutArrow {
+  font-size: 18px;
+  color: #dc2626;
+  opacity: 0.5;
+  transition: opacity 0.15s, transform 0.15s;
+
+  .logoutCard:hover & {
+    opacity: 1;
+    transform: translateX(3px);
+  }
 }
