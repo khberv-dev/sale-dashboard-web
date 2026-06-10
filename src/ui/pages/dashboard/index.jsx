@@ -1,7 +1,8 @@
 import st from './main.module.scss'
 import AuthContextProvider from "@/providers/auth/index.jsx"
 import { useGetSaleStatsQuery } from "@/services/sale/query.js"
-import { Spin, Switch } from "@gravity-ui/uikit"
+import { Switch } from "@gravity-ui/uikit"
+import { DashboardSkeleton } from '@/ui/components/skeleton/index.jsx'
 import SummaryCard from "@/ui/pages/dashboard/elements/summary-card/index.jsx"
 import { ClockIcon, DateIcon, HeartBeatIcon, PeopleIcon } from "@/ui/pages/dashboard/elements/icons.jsx"
 import LineChart from "@/ui/pages/dashboard/elements/line-chart/index.jsx"
@@ -63,7 +64,7 @@ function DashboardPage() {
     }, [socket, queryClient])
 
     if (isLoading) {
-        return <Spin/>
+        return <DashboardSkeleton/>
     }
 
     return (

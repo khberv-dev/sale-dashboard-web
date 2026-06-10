@@ -1,0 +1,164 @@
+/* ── TableSkeleton ── */
+
+.tableWrap {
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.headerRow {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 14px 16px;
+  border-bottom: 1px solid #f3f4f6;
+  background: #fafafa;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 14px 16px;
+  border-bottom: 1px solid #f3f4f6;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+/* ── DashboardSkeleton ── */
+
+.dashPage {
+  padding: 24px;
+  background: #0d0f14;
+  min-height: 100vh;
+}
+
+.dashSummary {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.dashCard {
+  flex: 1;
+  padding: 16px;
+  border: 1px solid #252935;
+  border-radius: 12px;
+  background: #13161e;
+  display: flex;
+  flex-direction: column;
+}
+
+.dashTopItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.dashCharts {
+  display: flex;
+  gap: 12px;
+  height: 200px;
+  margin-bottom: 16px;
+}
+
+.dashChartCard {
+  flex: 1;
+  border: 1px solid #252935;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #13161e;
+
+  :global(.g-skeleton) {
+    background: #1f232e;
+
+    &::after {
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.04), transparent);
+    }
+  }
+}
+
+.dashTableWrap {
+  padding: 16px;
+  border: 1px solid #252935;
+  border-radius: 12px;
+  background: #13161e;
+
+  :global(.g-skeleton) {
+    background: #1f232e;
+
+    &::after {
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.04), transparent);
+    }
+  }
+}
+
+.dashTableRow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 0;
+  border-bottom: 1px solid #252935;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+/* ── HomeSkeleton ── */
+
+.homePage {
+  padding: 8px;
+}
+
+.homeTop {
+  display: flex;
+  gap: 16px;
+}
+
+.homeCard {
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 20px;
+  background: #fff;
+}
+
+.homeDetail {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+  align-items: flex-start;
+
+  > *:first-child {
+    flex: 1;
+  }
+}
+
+.homeCharts {
+  width: 40%;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* ── SettingsSkeleton ── */
+
+.settingsPage {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.settingsCard {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 20px 24px;
+}

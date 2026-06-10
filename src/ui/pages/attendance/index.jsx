@@ -1,5 +1,5 @@
 import { useGetTodayAttendances, useRegisterAttendanceMutation } from "@/services/manager/query.js";
-import { Spin } from "@gravity-ui/uikit";
+import { TableSkeleton } from '@/ui/components/skeleton/index.jsx'
 import ManagerAttendanceTable from "@/ui/components/manager-attendance-table/index.jsx";
 
 function AttendancePage() {
@@ -12,7 +12,7 @@ function AttendancePage() {
 
     return (
         <div>
-            { attendances.isLoading ? <Spin/> :
+            { attendances.isLoading ? <TableSkeleton rows={ 10 }/> :
                 <>
                     <ManagerAttendanceTable
                         data={ attendances.data }

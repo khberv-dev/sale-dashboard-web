@@ -1,6 +1,7 @@
 import st from './main.module.scss'
 import { useDeleteSaleMutation, useGetSalesQuery } from '@/services/sale/query.js'
-import { Pagination, Spin } from '@gravity-ui/uikit'
+import { Pagination } from '@gravity-ui/uikit'
+import { TableSkeleton } from '@/ui/components/skeleton/index.jsx'
 import SalesTable from '@/ui/components/sales-table/index.jsx'
 import FloatingButton from '@/ui/components/floating-button/index.jsx'
 import { Plus } from '@gravity-ui/icons'
@@ -27,7 +28,7 @@ function SalesPage() {
 
     return (
         <div className={ st.container }>
-            { isLoading ? <Spin/> :
+            { isLoading ? <TableSkeleton rows={ 10 }/> :
                 <>
                     <div className={ st.salesList }>
                         <SalesTable

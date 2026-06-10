@@ -3,7 +3,8 @@ import TotalSaleCard from '@/ui/components/total-sale-card/index.jsx'
 import TopManagersCard from '@/ui/components/top-managers-card/index.jsx'
 import ManagersResultTable from '@/ui/components/managers-result-table/index.jsx'
 import { useGetSaleStatsQuery } from '@/services/sale/query.js'
-import { Spin, Switch } from '@gravity-ui/uikit'
+import { Switch } from '@gravity-ui/uikit'
+import { HomeSkeleton } from '@/ui/components/skeleton/index.jsx'
 import useSocket from '@/services/socket.js'
 import { useEffect, useState } from 'react'
 import NewSaleDialog from '@/ui/layouts/new-sale-dialog/index.jsx'
@@ -74,7 +75,7 @@ function HomePage() {
 
     return (
         <div className={ st.container }>
-            { isLoading ? <Spin/> :
+            { isLoading ? <HomeSkeleton/> :
                 <>
                     <div className={ st.totalResultContainer }>
                         <TotalSaleCard

@@ -1,7 +1,7 @@
 import { useGetSaleTypesQuery } from '@/services/sale/query.js'
 import { useState } from 'react'
 import st from '@/ui/pages/sales/main.module.scss'
-import { Spin } from '@gravity-ui/uikit'
+import { TableSkeleton } from '@/ui/components/skeleton/index.jsx'
 import FloatingButton from '@/ui/components/floating-button/index.jsx'
 import { Plus } from '@gravity-ui/icons'
 import SaleTypesTable from '@/ui/components/sale-types-table/index.jsx'
@@ -23,7 +23,7 @@ function SaleTypesPage() {
 
     return (
         <div className={ st.container }>
-            { isLoading ? <Spin/> :
+            { isLoading ? <TableSkeleton rows={ 8 }/> :
                 <>
                     <div className={ st.salesList }>
                         <SaleTypesTable

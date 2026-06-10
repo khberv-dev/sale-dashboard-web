@@ -1,6 +1,6 @@
 import st from './main.module.scss'
 import { useGetAllManagersQuery } from '@/services/manager/query.js'
-import { Spin } from '@gravity-ui/uikit'
+import { TableSkeleton } from '@/ui/components/skeleton/index.jsx'
 import ManagersTable from '@/ui/components/managers-table/index.jsx'
 import EditManagerDialog from '@/ui/layouts/edit-manager-dialog/index.jsx'
 import { useState } from 'react'
@@ -32,7 +32,7 @@ function ManagersPage() {
 
     return (
         <div className={ st.container }>
-            { managers.isLoading ? <Spin/> :
+            { managers.isLoading ? <TableSkeleton rows={ 10 }/> :
                 <>
                     <ManagersTable
                         data={ managers.data }

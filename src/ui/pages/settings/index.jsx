@@ -1,5 +1,6 @@
 import st from './main.module.scss'
-import { Avatar, Button, Icon, Label, Spin, Text, TextInput } from '@gravity-ui/uikit'
+import { Avatar, Button, Icon, Label, Text, TextInput } from '@gravity-ui/uikit'
+import { SettingsSkeleton } from '@/ui/components/skeleton/index.jsx'
 import useAuthContext from '@/providers/auth/useAuthContext.js'
 import { Controller, useForm } from 'react-hook-form'
 import NumberInput from '@/ui/components/number-input/index.jsx'
@@ -33,7 +34,7 @@ function SettingsPage() {
         updatePasswordForm.reset()
     }
 
-    if (monthPlan.isLoading) return <Spin/>
+    if (monthPlan.isLoading) return <SettingsSkeleton/>
 
     return (
         <div className={ st.page }>
