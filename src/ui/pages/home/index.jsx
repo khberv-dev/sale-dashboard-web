@@ -13,12 +13,27 @@ import FloatingButton from '@/ui/components/floating-button/index.jsx'
 import { VolumeFill, VolumeSlashFill } from '@gravity-ui/icons'
 import queueSound from '@/assets/queue.mp3'
 import confetti from 'canvas-confetti'
-import { useQueryClient } from "@tanstack/react-query";
+import { useQueryClient } from "@tanstack/react-query"
+import { RangeDatePicker } from '@gravity-ui/date-components'
+import { dateTimeParse } from '@gravity-ui/date-utils'
+import dayjs from 'dayjs'
 
 function HomePage() {
     const [byTeam, setByTeam] = useState(false)
+    const [dateRange, setDateRange] = useState(() => ({
+        start: dateTimeParse(dayjs().startOf('month').format('YYYY-MM-DD')),
+        end: dateTimeParse(dayjs().endOf('month').format('YYYY-MM-DD')),
+    }))
+
+    const startDate = dateRange.start?.format('YYYY-MM-DD') ?? null
+    const endDate = dateRange.end?.format('YYYY-MM-DD') ?? null
+
+    const isCustomRange =
+        startDate !== dayjs().startOf('month').format('YYYY-MM-DD') ||
+        endDate !== dayjs().endOf('month').format('YYYY-MM-DD')
+
     const queryClient = useQueryClient()
-    const { data: saleData, isLoading } = useGetSaleStatsQuery(byTeam)
+    const { data: saleData, isLoading } = useGetSaleStatsQuery(byTeam, startDate, endDate)
     const socket = useSocket()
     const [newSaleData, setNewSaleData] = useState(null)
     const [isSoundEnable, setIsSoundEnable] = useState(false)
@@ -67,20 +82,33 @@ function HomePage() {
                             totalSale={ saleData.totalAmount }
                             monthlySale={ saleData.totalAmount }
                             monthPlan={ saleData.monthPlan }
-                            saleRate={ saleData.saleRate }/>
+                            saleRate={ saleData.saleRate }
+                            isCustomRange={ isCustomRange }/>
                         <TopManagersCard
                             data={ saleData.total }
                         />
                     </div>
                     <br/>
-                    <div>
-                        <span>Umumiy</span>
-                        &nbsp;
-                        <Switch
-                            checked={ byTeam }
-                            onUpdate={ setByTeam }/>
-                        &nbsp;
-                        <span>Jamoa</span>
+                    <div className={ st.filterBar }>
+                        <div>
+                            <span>Umumiy</span>
+                            &nbsp;
+                            <Switch
+                                checked={ byTeam }
+                                onUpdate={ setByTeam }/>
+                            &nbsp;
+                            <span>Jamoa</span>
+                        </div>
+                        <div className={ st.rangePicker }>
+                            <RangeDatePicker
+                                value={ dateRange }
+                                onUpdate={ setDateRange }
+                                format="DD MMM YYYY"
+                                size="m"
+                                pin="round-round"
+                                style={ { width: '100%' } }
+                            />
+                        </div>
                     </div>
                     <br/>
                     <div className={ st.detailContainer }>
@@ -88,8 +116,12 @@ function HomePage() {
                             <ManagersResultTable data={ saleData.total }/>
                         </div>
                         <div className={ st.summaryContainer }>
-                            <DailySaleChart saleData={ saleData.dailyStats }/>
-                            <MonthlySaleChart saleData={ saleData.monthlyStats }/>
+                            <div className={ st.chartCard }>
+                                <DailySaleChart saleData={ saleData.dailyStats }/>
+                            </div>
+                            <div className={ st.chartCard }>
+                                <MonthlySaleChart saleData={ saleData.monthlyStats }/>
+                            </div>
                         </div>
                     </div>
                     <FloatingButton

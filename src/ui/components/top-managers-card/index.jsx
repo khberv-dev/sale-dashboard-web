@@ -22,6 +22,7 @@ function TopManagersCard({ data }) {
                 { sortedFilteredData.map((manager, index) =>
                     <TopManagerItem
                         key={ index }
+                        colorIndex={ index }
                         firstName={ manager.firstName }
                         lastName={ manager.lastName ? manager.lastName : '' }
                         sale={ manager.sale }

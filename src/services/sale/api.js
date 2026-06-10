@@ -1,11 +1,11 @@
 import apiClient from '@/services/api.js'
 import dayjs from 'dayjs'
 
-export async function getSaleStats(byTeam) {
+export async function getSaleStats(byTeam, startDate, endDate) {
     const now = dayjs()
-    const startDate = now.startOf('month').format('YYYY-MM-DD')
-    const endDate = now.endOf('month').format('YYYY-MM-DD HH:mm:ss')
-    const res = await apiClient.get(`sale/stats?startDate=${ startDate }&endDate=${ endDate }&byTeam=${ byTeam }`)
+    const start = startDate ?? now.startOf('month').format('YYYY-MM-DD')
+    const end = endDate ? `${ endDate } 23:59:59` : now.endOf('month').format('YYYY-MM-DD HH:mm:ss')
+    const res = await apiClient.get(`sale/stats?startDate=${ start }&endDate=${ end }&byTeam=${ byTeam }`)
 
     return res.data
 }

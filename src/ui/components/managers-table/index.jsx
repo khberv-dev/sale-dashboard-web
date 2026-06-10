@@ -86,11 +86,13 @@ function ManagersTable({ data, onItemEdit, onAddCall }) {
     ]
 
     return (
-        <TableWithActions
-            width={ 'max' }
-            data={ data }
-            columns={ columns }
-            getRowActions={ actions }/>
+        <div style={ { border: '1px solid #e5e7eb', borderRadius: 12, overflow: 'hidden' } }>
+            <TableWithActions
+                width={ 'max' }
+                data={ data }
+                columns={ columns }
+                getRowActions={ actions }/>
+        </div>
     )
 }
 

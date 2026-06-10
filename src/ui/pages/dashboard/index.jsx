@@ -13,10 +13,20 @@ import queueSound from "@/assets/queue.mp3"
 import confetti from "canvas-confetti"
 import useSocket from "@/services/socket.js"
 import { useQueryClient } from "@tanstack/react-query"
+import { RangeDatePicker } from "@gravity-ui/date-components"
+import { dateTimeParse } from "@gravity-ui/date-utils"
 
 function DashboardPage() {
     const [byTeam, setByTeam] = useState(false)
-    const { data: saleData, isLoading } = useGetSaleStatsQuery(byTeam)
+    const [dateRange, setDateRange] = useState(() => ({
+        start: dateTimeParse(dayjs().startOf('month').format('YYYY-MM-DD')),
+        end: dateTimeParse(dayjs().endOf('month').format('YYYY-MM-DD')),
+    }))
+
+    const startDate = dateRange.start?.format('YYYY-MM-DD') ?? null
+    const endDate = dateRange.end?.format('YYYY-MM-DD') ?? null
+
+    const { data: saleData, isLoading } = useGetSaleStatsQuery(byTeam, startDate, endDate)
     const dateTime = dayjs().format('DD MMM. YYYY - HH:mm')
     const [newSaleData, setNewSaleData] = useState(null)
     const socket = useSocket()
@@ -112,6 +122,7 @@ function DashboardPage() {
                         width={ 350 }
                     />
                 </div>
+
                 <div className={ st.charts }>
                     <div className={ st.chart }>
                         <LineChart
@@ -124,6 +135,17 @@ function DashboardPage() {
                             color={ '#2dd4bf' }/>
                     </div>
                 </div>
+                <div className={ st.filterRow }>
+                    <span className={ st.filterLabel }>Muddat:</span>
+                    <RangeDatePicker
+                        value={ dateRange }
+                        onUpdate={ setDateRange }
+                        format="DD MMM YYYY"
+                        size="m"
+                        pin="round-round"
+                    />
+                </div>
+
                 <ManagersResult
                     total={ saleData.total }/>
             </div>

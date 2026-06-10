@@ -83,10 +83,12 @@ function ManagersResultTable({ data }) {
     const sortedData = data.sort((a, b) => b.sale - a.sale)
 
     return (
-        <Table
-            width={ 'max' }
-            data={ sortedData }
-            columns={ columns }/>
+        <div style={ { border: '1px solid #e5e7eb', borderRadius: 12, overflow: 'hidden' } }>
+            <Table
+                width={ 'max' }
+                data={ sortedData }
+                columns={ columns }/>
+        </div>
     )
 }
 

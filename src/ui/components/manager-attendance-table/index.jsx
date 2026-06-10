@@ -51,11 +51,13 @@ function ManagerAttendanceTable({ data, onAttendanceRegisterClick }) {
     ]
 
     return (
-        <AttendanceTable
-            width={ "max" }
-            data={ data }
-            columns={ columns }
-            getRowActions={ actions }/>
+        <div style={ { border: '1px solid #e5e7eb', borderRadius: 12, overflow: 'hidden' } }>
+            <AttendanceTable
+                width={ "max" }
+                data={ data }
+                columns={ columns }
+                getRowActions={ actions }/>
+        </div>
     )
 }
 

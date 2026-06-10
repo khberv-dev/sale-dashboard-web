@@ -11,9 +11,9 @@ import {
 } from '@/services/sale/api.js'
 import { useInfoMutation } from '@/services/query.js'
 
-export const useGetSaleStatsQuery = (byTeam = false) => useQuery({
-    queryKey: ['sale-stats', byTeam],
-    queryFn: () => getSaleStats(byTeam)
+export const useGetSaleStatsQuery = (byTeam = false, startDate = null, endDate = null) => useQuery({
+    queryKey: ['sale-stats', byTeam, startDate, endDate],
+    queryFn: () => getSaleStats(byTeam, startDate, endDate)
 })
 
 export const useGetSalesQuery = (params) => useQuery({

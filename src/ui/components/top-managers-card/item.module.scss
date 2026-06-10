@@ -1,20 +1,37 @@
 .card {
+  position: relative;
+  overflow: hidden;
   width: 280px;
   padding: 24px 8px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 12px;
+  border-radius: 12px;
+}
 
-  &:nth-child(1) {
-    background: linear-gradient(-45deg, #4361ee, #b9c2ed) no-repeat;
-  }
+.bubble {
+  position: absolute;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  pointer-events: none;
+}
 
-  &:nth-child(2) {
-    background: linear-gradient(-45deg, #f72585, #f1a6c8) no-repeat;
-  }
+.content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
 
-  &:nth-child(3) {
-    background: linear-gradient(-45deg, #7209b7, #aa90bc) no-repeat;
-  }
+.name {
+  color: #fff;
+  text-align: center;
+}
+
+.sale {
+  color: rgba(255, 255, 255, 0.85);
 }
