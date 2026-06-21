@@ -1,10 +1,10 @@
-import { Button, Dialog, TextInput } from '@gravity-ui/uikit'
+import { Button, Checkbox, Dialog, TextInput } from '@gravity-ui/uikit'
 import st from '@/ui/layouts/edit-manager-dialog/main.module.scss'
-import { useForm } from 'react-hook-form'
+import { Controller, useForm } from 'react-hook-form'
 import { useCreateSaleTypeMutation } from '@/services/sale/query.js'
 
 function CreateSaleTypeDialog({ open, onClose }) {
-    const { register, handleSubmit, reset } = useForm()
+    const { register, handleSubmit, reset, control } = useForm()
     const createSaleType = useCreateSaleTypeMutation()
 
     const onSubmit = async (data) => {
@@ -22,6 +22,15 @@ function CreateSaleTypeDialog({ open, onClose }) {
                         placeholder={ 'Sotuv turi' }
                         { ...register('name', { required: true }) }
                     />
+                    <Controller
+                        name={ 'isResale' }
+                        control={ control }
+                        defaultValue={ false }
+                        render={ ({ field }) =>
+                            <Checkbox
+                                checked={ field.value }
+                                onUpdate={ field.onChange }
+                            >Qayta sotuv</Checkbox> }/>
                 </Dialog.Body>
                 <Dialog.Footer>
                     <Button

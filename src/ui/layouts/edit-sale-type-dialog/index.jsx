@@ -36,6 +36,15 @@ function EditSaleTypeDialog({ saleType, open, onClose }) {
                                 checked={ field.value }
                                 onUpdate={ field.onChange }
                             >Faol</Checkbox> }/>
+                    <Controller
+                        name={ 'isResale' }
+                        control={ control }
+                        render={ ({ field }) =>
+                            <Checkbox
+                                defaultChecked={ saleType.isResale }
+                                checked={ field.value }
+                                onUpdate={ field.onChange }
+                            >Qayta sotuv</Checkbox> }/>
                 </Dialog.Body>
                 <Dialog.Footer>
                     <Button

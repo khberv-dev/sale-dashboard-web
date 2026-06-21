@@ -23,6 +23,15 @@ const columns = [
         }
     },
     {
+        id: 'isResale',
+        name: 'Qayta sotuv',
+        template: item => {
+            return item.isResale ?
+                <Label theme={ 'warning' }>Ha</Label> :
+                <Label theme={ 'normal' }>Yo'q</Label>
+        }
+    },
+    {
         id: 'created_at',
         name: "Qo'shilgan vaqti",
         template: item => formatDate(item.createdAt)
