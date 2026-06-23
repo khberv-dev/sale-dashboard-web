@@ -100,15 +100,15 @@ function DashboardPage() {
                         headTitle={ 'BUGUNGI SOTUV' }
                         summary={ saleData.dailyAmount }
                         headlineColor={ '#4f8ef7' }
-                        flex={ 1 }
-                        subSummary={ saleData.totalSaleAmount }
-                        subTitle={ 'Qayta sotuv' }/>
+                        flex={ 1 }/>
                     <SummaryCard
                         icon={ DateIcon }
                         headTitle={ 'OYLIK SOTUV' }
                         summary={ saleData.totalAmount }
                         headlineColor={ '#2dd4bf' }
-                        flex={ 1 }/>
+                        flex={ 1 }
+                        subSummary={ saleData.totalSaleAmount }
+                        subTitle={ 'Qayta sotuv' }/>
                     <SummaryCard
                         icon={ HeartBeatIcon }
                         headTitle={ 'OYLIK PLAN' }

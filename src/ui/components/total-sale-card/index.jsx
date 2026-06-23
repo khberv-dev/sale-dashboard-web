@@ -14,12 +14,6 @@ function TotalSaleCard({ dailySale, totalSale, monthlySale, dailyPlan, monthPlan
                     <Text variant={ 'header-1' }>Bugun: </Text>
                     &nbsp;&nbsp;&nbsp;
                     <Text variant={ 'header-1' } color={ 'positive' }>{ formatNumber(dailySale) } so'm</Text>
-                    { resaleAmount > 0 && (
-                        <div>
-                            <Text variant={ 'body-2' } color={ 'secondary' }>Qayta sotuv: </Text>
-                            <Text variant={ 'body-2' } color={ 'warning' }>{ formatNumber(resaleAmount) } so'm</Text>
-                        </div>
-                    ) }
                 </div>
             ) }
             <div>
@@ -27,6 +21,12 @@ function TotalSaleCard({ dailySale, totalSale, monthlySale, dailyPlan, monthPlan
                     <Text variant={ 'subheader-1' }>Umumiy: </Text>
                     <br/>
                     <Text variant={ 'header-2' } color={ 'positive' }>{ formatNumber(totalSale) } so'm</Text>
+                    { resaleAmount > 0 && (
+                        <div>
+                            <Text variant={ 'body-2' } color={ 'secondary' }>Qayta sotuv: </Text>
+                            <Text variant={ 'body-2' } color={ 'warning' }>{ formatNumber(resaleAmount) } so'm</Text>
+                        </div>
+                    ) }
                 </div>
                 <div className={ st.planContainer }>
                     <Text variant={ 'subheader-1' } color={ 'info' }>Maqsad: </Text>
