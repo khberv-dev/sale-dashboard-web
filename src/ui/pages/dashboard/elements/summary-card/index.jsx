@@ -14,7 +14,9 @@ function SummaryCard({
                          managerList,
                          currentProgress,
                          progressLimit,
-                         remainingLimit
+                         remainingLimit,
+                         subSummary,
+                         subTitle
                      }) {
     const orderColors = [
         {
@@ -47,6 +49,13 @@ function SummaryCard({
             { summary ?
                 <div className={ st.summary }>
                     { formatNumber(summary) }
+                </div>
+                : '' }
+            { subSummary > 0 ?
+                <div className={ st.subSummary }>
+                    <span className={ st.subTitle }>{ subTitle }:</span>
+                    &nbsp;
+                    <span>{ formatNumber(subSummary) }</span>
                 </div>
                 : '' }
 

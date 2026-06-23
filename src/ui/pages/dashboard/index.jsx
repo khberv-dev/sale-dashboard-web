@@ -100,7 +100,9 @@ function DashboardPage() {
                         headTitle={ 'BUGUNGI SOTUV' }
                         summary={ saleData.dailyAmount }
                         headlineColor={ '#4f8ef7' }
-                        flex={ 1 }/>
+                        flex={ 1 }
+                        subSummary={ saleData.totalSaleAmount }
+                        subTitle={ 'Qayta sotuv' }/>
                     <SummaryCard
                         icon={ DateIcon }
                         headTitle={ 'OYLIK SOTUV' }

@@ -84,7 +84,8 @@ function HomePage() {
                             monthlySale={ saleData.totalAmount }
                             monthPlan={ saleData.monthPlan }
                             saleRate={ saleData.saleRate }
-                            isCustomRange={ isCustomRange }/>
+                            isCustomRange={ isCustomRange }
+                            resaleAmount={ saleData.totalSaleAmount }/>
                         <TopManagersCard
                             data={ saleData.total }
                         />

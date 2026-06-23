@@ -3,7 +3,7 @@ import { Card, Label, Text } from '@gravity-ui/uikit'
 import { formatNumber } from '@/utils/formatter.js'
 import dayjs from 'dayjs'
 
-function TotalSaleCard({ dailySale, totalSale, monthlySale, dailyPlan, monthPlan, saleRate, isCustomRange }) {
+function TotalSaleCard({ dailySale, totalSale, monthlySale, dailyPlan, monthPlan, saleRate, isCustomRange, resaleAmount }) {
     const now = dayjs()
     const remainingDaysMonthEnd = now.endOf('month').date() - now.date()
 
@@ -14,6 +14,12 @@ function TotalSaleCard({ dailySale, totalSale, monthlySale, dailyPlan, monthPlan
                     <Text variant={ 'header-1' }>Bugun: </Text>
                     &nbsp;&nbsp;&nbsp;
                     <Text variant={ 'header-1' } color={ 'positive' }>{ formatNumber(dailySale) } so'm</Text>
+                    { resaleAmount > 0 && (
+                        <div>
+                            <Text variant={ 'body-2' } color={ 'secondary' }>Qayta sotuv: </Text>
+                            <Text variant={ 'body-2' } color={ 'warning' }>{ formatNumber(resaleAmount) } so'm</Text>
+                        </div>
+                    ) }
                 </div>
             ) }
             <div>
