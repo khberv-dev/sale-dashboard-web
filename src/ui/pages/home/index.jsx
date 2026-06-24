@@ -3,7 +3,7 @@ import TotalSaleCard from '@/ui/components/total-sale-card/index.jsx'
 import TopManagersCard from '@/ui/components/top-managers-card/index.jsx'
 import ManagersResultTable from '@/ui/components/managers-result-table/index.jsx'
 import { useGetSaleStatsQuery } from '@/services/sale/query.js'
-import { Switch } from '@gravity-ui/uikit'
+import { Button, Switch } from '@gravity-ui/uikit'
 import { HomeSkeleton } from '@/ui/components/skeleton/index.jsx'
 import useSocket from '@/services/socket.js'
 import { useEffect, useState } from 'react'
@@ -102,6 +102,15 @@ function HomePage() {
                             <span>Jamoa</span>
                         </div>
                         <div className={ st.rangePicker }>
+                            <Button
+                                size="m"
+                                view="outlined"
+                                onClick={ () => {
+                                    const today = dateTimeParse(dayjs().format('YYYY-MM-DD'))
+                                    setDateRange({ start: today, end: today })
+                                } }>
+                                Bugun
+                            </Button>
                             <RangeDatePicker
                                 value={ dateRange }
                                 onUpdate={ setDateRange }
