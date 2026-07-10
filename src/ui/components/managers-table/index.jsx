@@ -3,6 +3,13 @@ import { formatDate, formatNumber } from '@/utils/formatter.js'
 import { Headphones, Pencil } from '@gravity-ui/icons'
 import { getAvatarUrl } from '@/utils/url-resolver.js'
 
+const positionLabels = {
+    JUNIOR: 'Junior',
+    MIDDLE: 'Middle',
+    SENIOR: 'Senior',
+    TEAM_LEAD: 'Team Lead'
+}
+
 const columns = [
     {
         id: 'index',
@@ -50,6 +57,11 @@ const columns = [
     {
         id: 'team',
         name: 'Guruh'
+    },
+    {
+        id: 'position',
+        name: 'Lavozim',
+        template: (item) => item.position ? positionLabels[item.position] : ''
     },
     {
         id: 'status',

@@ -41,6 +41,25 @@ function EditManagerDialog({ manager, open, onClose }) {
         return
     }
 
+    const positionOptions = [
+        {
+            value: 'JUNIOR',
+            content: 'Junior'
+        },
+        {
+            value: 'MIDDLE',
+            content: 'Middle'
+        },
+        {
+            value: 'SENIOR',
+            content: 'Senior'
+        },
+        {
+            value: 'TEAM_LEAD',
+            content: 'Team Lead'
+        }
+    ]
+
     const teamOptions = [
         {
             value: null,
@@ -100,6 +119,18 @@ function EditManagerDialog({ manager, open, onClose }) {
                                 value={ field.value != null ? [String(field.value)] : [] }
                                 onUpdate={ (val) => field.onChange(val[0]) }
                                 options={ [...teamOptions] }
+                            /> }/>
+
+                    <Controller
+                        control={ control }
+                        name={ 'position' }
+                        defaultValue={ manager.position }
+                        render={ ({ field }) =>
+                            <Select
+                                placeholder={ 'Lavozim' }
+                                value={ field.value ? [field.value] : [] }
+                                onUpdate={ (val) => field.onChange(val[0]) }
+                                options={ positionOptions }
                             /> }/>
 
                     <Controller name={ 'isActive' } control={ control } defaultValue={ manager.isActive }
