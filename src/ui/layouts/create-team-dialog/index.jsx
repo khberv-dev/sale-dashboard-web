@@ -3,6 +3,7 @@ import st from "@/ui/layouts/edit-manager-dialog/main.module.scss"
 import { Button, Dialog, TextInput } from "@gravity-ui/uikit"
 import { useEffect } from "react"
 import { useCreateTeam } from "@/services/team/query.js"
+import FormField from "@/ui/components/form-field/index.jsx"
 
 function CreateTeamDialog({ open, onClose }) {
     const { register, handleSubmit, reset } = useForm()
@@ -22,10 +23,12 @@ function CreateTeamDialog({ open, onClose }) {
             <Dialog.Header caption={ 'Yangi guruh' }/>
             <form onSubmit={ handleSubmit(onSubmit) }>
                 <Dialog.Body className={ st.formBody }>
-                    <TextInput
-                        placeholder={ 'Nomi' }
-                        { ...register('name', { required: true }) }
-                    />
+                    <FormField label={ 'Guruh nomi' }>
+                        <TextInput
+                            placeholder={ 'Nomi' }
+                            { ...register('name', { required: true }) }
+                        />
+                    </FormField>
                 </Dialog.Body>
                 <Dialog.Footer>
                     <Button

@@ -3,6 +3,7 @@ import DurationInput from "@/ui/components/duration-input/index.jsx";
 import { useState } from "react";
 import { useAddCallMutation } from "@/services/manager/query.js";
 import { extractDurationSeconds } from "@/utils/formatter.js";
+import FormField from "@/ui/components/form-field/index.jsx";
 
 function AddCallDialog({ manager, open, onClose }) {
     const [duration, setDuration] = useState('')
@@ -27,8 +28,10 @@ function AddCallDialog({ manager, open, onClose }) {
         <Dialog size={ 's' } open={ open } onClose={ onClose }>
             <Dialog.Header caption={ manager.firstName + ' ' + manager.lastName }/>
             <Dialog.Body>
-                <div style={ { display: 'flex', gap: '8px' } }>
-                    <DurationInput onChange={ handleDurationChange }/>
+                <div style={ { display: 'flex', gap: '8px', alignItems: 'flex-end' } }>
+                    <FormField label={ "Qo'ng'iroq davomiyligi" }>
+                        <DurationInput onChange={ handleDurationChange }/>
+                    </FormField>
                     <Button
                         view={ 'action' }
                         onClick={ handleSubmitClick }>Qo'shish</Button>

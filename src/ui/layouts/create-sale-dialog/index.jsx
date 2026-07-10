@@ -6,6 +6,7 @@ import NumberInput from '@/ui/components/number-input/index.jsx'
 import { extractNumber } from '@/utils/formatter.js'
 import { DatePicker } from '@gravity-ui/date-components'
 import { dateTime, dateTimeParse } from '@gravity-ui/date-utils'
+import FormField from '@/ui/components/form-field/index.jsx'
 
 function CreateSaleDialog({ open, onClose }) {
     const { handleSubmit, control, reset } = useForm()
@@ -38,52 +39,60 @@ function CreateSaleDialog({ open, onClose }) {
             <Dialog.Header caption={ 'Yangi sotuv' }/>
             <form onSubmit={ handleSubmit(onSubmit) }>
                 <Dialog.Body className={ st.formBody }>
-                    <Controller
-                        name={ 'contractNumber' }
-                        control={ control }
-                        rules={ formInputRules }
-                        render={ ({ field }) =>
-                            <TextInput
-                                placeholder={ 'Shartnoma raqami' }
-                                { ...field }/>
-                        }/>
+                    <FormField label={ 'Shartnoma raqami' }>
+                        <Controller
+                            name={ 'contractNumber' }
+                            control={ control }
+                            rules={ formInputRules }
+                            render={ ({ field }) =>
+                                <TextInput
+                                    placeholder={ 'Shartnoma raqami' }
+                                    { ...field }/>
+                            }/>
+                    </FormField>
 
-                    <Controller
-                        name={ 'amount' }
-                        control={ control }
-                        rules={ formInputRules }
-                        render={ ({ field }) => (
-                            <NumberInput
-                                placeholder={ 'Summa' }
-                                { ...field }/>
-                        ) }/>
+                    <FormField label={ 'Summa' }>
+                        <Controller
+                            name={ 'amount' }
+                            control={ control }
+                            rules={ formInputRules }
+                            render={ ({ field }) => (
+                                <NumberInput
+                                    placeholder={ 'Summa' }
+                                    { ...field }/>
+                            ) }/>
+                    </FormField>
 
-                    <Controller
-                        name={ 'type' }
-                        control={ control }
-                        rules={ formInputRules }
-                        render={ ({ field }) => (<Select
-                            value={ field.value }
-                            onUpdate={ field.onChange }
-                            placeholder={ 'Sotuv turi' }>
-                            { saleTypesLoading ? '' : saleTypes.map((type, index) =>
-                                <Select.Option
-                                    key={ index }
-                                    value={ type.id }>{ type.name }</Select.Option>
-                            ) }
-                        </Select>) }/>
-
-                    <Controller
-                        name={ 'date' }
-                        control={ control }
-                        rules={ formInputRules }
-                        render={ ({ field }) => (
-                            <DatePicker
-                                format={ 'DD-MM-YYYY' }
+                    <FormField label={ 'Sotuv turi' }>
+                        <Controller
+                            name={ 'type' }
+                            control={ control }
+                            rules={ formInputRules }
+                            render={ ({ field }) => (<Select
                                 value={ field.value }
                                 onUpdate={ field.onChange }
-                            />
-                        ) }/>
+                                placeholder={ 'Sotuv turi' }>
+                                { saleTypesLoading ? '' : saleTypes.map((type, index) =>
+                                    <Select.Option
+                                        key={ index }
+                                        value={ type.id }>{ type.name }</Select.Option>
+                                ) }
+                            </Select>) }/>
+                    </FormField>
+
+                    <FormField label={ 'Sana' }>
+                        <Controller
+                            name={ 'date' }
+                            control={ control }
+                            rules={ formInputRules }
+                            render={ ({ field }) => (
+                                <DatePicker
+                                    format={ 'DD-MM-YYYY' }
+                                    value={ field.value }
+                                    onUpdate={ field.onChange }
+                                />
+                            ) }/>
+                    </FormField>
                 </Dialog.Body>
                 <Dialog.Footer>
                     <Button

@@ -2,6 +2,7 @@ import { Button, Checkbox, Dialog, TextInput } from '@gravity-ui/uikit'
 import st from '@/ui/layouts/edit-manager-dialog/main.module.scss'
 import { Controller, useForm } from 'react-hook-form'
 import { useUpdateSaleTypeMutation } from '@/services/sale/query.js'
+import FormField from '@/ui/components/form-field/index.jsx'
 
 function EditSaleTypeDialog({ saleType, open, onClose }) {
     const { register, handleSubmit, reset, control } = useForm()
@@ -22,11 +23,13 @@ function EditSaleTypeDialog({ saleType, open, onClose }) {
             <Dialog.Header caption={ 'Sotuv turi' }/>
             <form onSubmit={ handleSubmit(onSubmit) }>
                 <Dialog.Body className={ st.formBody }>
-                    <TextInput
-                        defaultValue={ saleType.name }
-                        placeholder={ 'Sotuv turi' }
-                        { ...register('name', { required: true }) }
-                    />
+                    <FormField label={ 'Sotuv turi nomi' }>
+                        <TextInput
+                            defaultValue={ saleType.name }
+                            placeholder={ 'Sotuv turi' }
+                            { ...register('name', { required: true }) }
+                        />
+                    </FormField>
                     <Controller
                         name={ 'isActive' }
                         control={ control }

@@ -8,6 +8,7 @@ import NumberInput from "@/ui/components/number-input/index.jsx"
 import { extractNumber, formatNumber } from "@/utils/formatter.js"
 import { useEffect } from "react"
 import { useGetTeams } from "@/services/team/query.js"
+import FormField from "@/ui/components/form-field/index.jsx"
 
 function EditManagerDialog({ manager, open, onClose }) {
     const { register, handleSubmit, reset, control } = useForm()
@@ -76,62 +77,80 @@ function EditManagerDialog({ manager, open, onClose }) {
             <Dialog.Header caption={ 'Sotuv menejer profili' }/>
             <form onSubmit={ handleSubmit(onSubmit) }>
                 <Dialog.Body className={ st.formBody }>
-                    <TextInput
-                        defaultValue={ manager.firstName }
-                        placeholder={ 'Ism' }
-                        { ...register('firstName') }/>
-                    <TextInput
-                        defaultValue={ manager.lastName }
-                        placeholder={ 'Familiya' }
-                        { ...register('lastName') }/>
-                    <TextInput
-                        defaultValue={ manager.username }
-                        placeholder={ 'Login' }
-                        { ...register('username') }/>
-                    <TextInput
-                        defaultValue={ manager.accountId }
-                        placeholder={ 'amoCRM akkaunt' }
-                        { ...register('crmAccount') }/>
-                    <TextInput
-                        defaultValue={ manager.sipNumber }
-                        placeholder={ 'SIP raqam' }
-                        { ...register('sipNumber') }/>
-                    <Controller
-                        name={ 'plan' }
-                        control={ control }
-                        defaultValue={ formatNumber(manager.plan) }
-                        render={ ({ field }) =>
-                            <NumberInput
-                                placeholder={ 'Oylik plan' }
-                                { ...field }/>
-                        }/>
-                    <TextInput
-                        type={ 'password' }
-                        placeholder={ 'Parol' }
-                        { ...register('password') }/>
+                    <FormField label={ 'Ism' }>
+                        <TextInput
+                            defaultValue={ manager.firstName }
+                            placeholder={ 'Ism' }
+                            { ...register('firstName') }/>
+                    </FormField>
+                    <FormField label={ 'Familiya' }>
+                        <TextInput
+                            defaultValue={ manager.lastName }
+                            placeholder={ 'Familiya' }
+                            { ...register('lastName') }/>
+                    </FormField>
+                    <FormField label={ 'Login' }>
+                        <TextInput
+                            defaultValue={ manager.username }
+                            placeholder={ 'Login' }
+                            { ...register('username') }/>
+                    </FormField>
+                    <FormField label={ 'amoCRM akkaunt' }>
+                        <TextInput
+                            defaultValue={ manager.accountId }
+                            placeholder={ 'amoCRM akkaunt' }
+                            { ...register('crmAccount') }/>
+                    </FormField>
+                    <FormField label={ 'SIP raqam' }>
+                        <TextInput
+                            defaultValue={ manager.sipNumber }
+                            placeholder={ 'SIP raqam' }
+                            { ...register('sipNumber') }/>
+                    </FormField>
+                    <FormField label={ 'Oylik plan' }>
+                        <Controller
+                            name={ 'plan' }
+                            control={ control }
+                            defaultValue={ formatNumber(manager.plan) }
+                            render={ ({ field }) =>
+                                <NumberInput
+                                    placeholder={ 'Oylik plan' }
+                                    { ...field }/>
+                            }/>
+                    </FormField>
+                    <FormField label={ 'Parol' }>
+                        <TextInput
+                            type={ 'password' }
+                            placeholder={ 'Parol' }
+                            { ...register('password') }/>
+                    </FormField>
 
-                    <Controller
-                        control={ control }
-                        name={ 'teamId' }
-                        defaultValue={ manager.teamId }
-                        render={ ({ field }) =>
-                            <Select
-                                value={ field.value != null ? [String(field.value)] : [] }
-                                onUpdate={ (val) => field.onChange(val[0]) }
-                                options={ [...teamOptions] }
-                            /> }/>
+                    <FormField label={ 'Guruh' }>
+                        <Controller
+                            control={ control }
+                            name={ 'teamId' }
+                            defaultValue={ manager.teamId }
+                            render={ ({ field }) =>
+                                <Select
+                                    value={ field.value != null ? [String(field.value)] : [] }
+                                    onUpdate={ (val) => field.onChange(val[0]) }
+                                    options={ [...teamOptions] }
+                                /> }/>
+                    </FormField>
 
-                    <Controller
-                        control={ control }
-                        name={ 'position' }
-                        defaultValue={ manager.position }
-                        render={ ({ field }) =>
-                            <Select
-                                placeholder={ 'Lavozim' }
-                                value={ field.value ? [field.value] : [] }
-                                onUpdate={ (val) => field.onChange(val[0]) }
-                                options={ positionOptions }
-                            /> }/>
+                    <FormField label={ 'Lavozim' }>
+                        <Controller
+                            control={ control }
+                            name={ 'position' }
+                            defaultValue={ manager.position }
+                            render={ ({ field }) =>
+                                <Select
+                                    placeholder={ 'Lavozim' }
+                                    value={ field.value ? [field.value] : [] }
+                                    onUpdate={ (val) => field.onChange(val[0]) }
+                                    options={ positionOptions }
+                                /> }/>
+                    </FormField>
 
                     <Controller name={ 'isActive' } control={ control } defaultValue={ manager.isActive }
                                 render={ ({ field }) =>
