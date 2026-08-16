@@ -42,7 +42,7 @@ Copy `.env.example` to `.env` and set:
 - `api.js` — raw Axios calls via `apiClient`, returning `res.data`.
 - `query.js` — TanStack Query hooks. Queries are one-line arrow consts (`export const useXQuery = (...) => useQuery({...})`).
 
-Mutations normally go through `useInfoMutation` (`src/services/query.js`), a wrapper that toasts `data.message` on success / `error.response.data.message` on failure and invalidates a query key. Write a bespoke `useMutation` only when the response needs richer handling — see `useCreateEnrollmentMutation`, which toasts `warning` instead of `success` when `saleRecorded === false`, and `extractErrorMessage` for NestJS validation errors that arrive as a `message` array.
+Mutations normally go through `useInfoMutation` (`src/services/query.js`), a wrapper that toasts `data.message` on success / `error.response.data.message` on failure and invalidates a query key. Write a bespoke `useMutation` only when the response needs richer handling — see `useCreatePendingEnrollmentMutation`, which routes errors through `extractErrorMessage` for NestJS validation errors that arrive as a `message` array.
 
 Global query default: `refetchOnWindowFocus: false`.
 
@@ -50,7 +50,7 @@ Global query default: `refetchOnWindowFocus: false`.
 
 **UI structure (`src/ui/`):**
 - `pages/` — route views; page-local subcomponents live under `pages/<page>/elements/`.
-- `layouts/` — dialogs and form compositions shared across pages (`create-sale-dialog`, `enroll-student-dialog`, `side-navigation`, …).
+- `layouts/` — dialogs and form compositions shared across pages (`create-sale-dialog`, `side-navigation`, …).
 - `components/` — reusable display components (tables, charts, cards, inputs).
 
 Each folder is `index.jsx` + optional `main.module.scss`, imported as `import st from './main.module.scss'`.

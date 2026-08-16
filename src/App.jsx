@@ -10,7 +10,6 @@ import ContractPage from '@/ui/pages/contract/index.jsx'
 import AttendancePage from "@/ui/pages/attendance/index.jsx";
 import DashboardPage from "@/ui/pages/dashboard/index.jsx";
 import TeamsPage from "@/ui/pages/teams/index.jsx"
-import EnrollmentPage from "@/ui/pages/enrollment/index.jsx"
 
 function App() {
     return (
@@ -23,7 +22,6 @@ function App() {
                     <Route path={ '/' } element={ <HomePage/> }/>
                     <Route path={ '/sales' } element={ <SalesPage/> }/>
                     <Route path={ '/sale-types' } element={ <SaleTypesPage/> }/>
-                    <Route path={ '/enrollment' } element={ <EnrollmentPage/> }/>
                     <Route path={ '/managers' } element={ <ManagersPage/> }/>
                     <Route path={ '/teams' } element={ <TeamsPage/> }/>
                     <Route path={ '/attendances' } element={ <AttendancePage/> }/>
