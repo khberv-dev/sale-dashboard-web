@@ -3,3 +3,24 @@
   grid-template-columns: 1fr 1fr;
   gap: 12px;
 }
+
+.fullRow {
+  grid-column: 1 / -1;
+}
+
+.section {
+  grid-column: 1 / -1;
+  border-top: 1px solid var(--g-color-line-generic);
+  margin-top: 4px;
+  padding-top: 12px;
+}
+
+.searchRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.searchInput {
+  flex-grow: 1;
+}
