@@ -1,0 +1,9 @@
+.formBody {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.fullRow {
+  grid-column: 1 / -1;
+}

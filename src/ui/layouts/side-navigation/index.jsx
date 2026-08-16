@@ -3,6 +3,7 @@ import {
     CircleDollar,
     FileText,
     Gear,
+    GraduationCap,
     House,
     ListCheck,
     Pencil,
@@ -35,6 +36,11 @@ function SideNavigation({ children }) {
             title: 'Sotuv',
             icon: SquareListUl,
             link: 'sales'
+        },
+        {
+            title: 'Kursga yozish',
+            icon: GraduationCap,
+            link: 'enrollment'
         },
         {
             title: 'Sotuv turlari',
